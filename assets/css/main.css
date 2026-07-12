@@ -579,3 +579,15 @@ h1,h2,h3,h4,.btn,.eyebrow,.nav-links a{font-family:'Encode Sans',sans-serif}
 .lime-band .manifesto .w{opacity:.18}
 /* rotor behind wordmark, layered not colliding */
 .rotor{z-index:0;opacity:.55}
+
+/* typographic project covers (placeholder until custom art) */
+.him.cover{display:flex;align-items:center;justify-content:center;position:relative;background:#111;border:1px solid var(--hair)}
+.him.cover .cvw{font-family:'Encode Sans',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.02em;font-size:clamp(34px,4.2vw,64px);line-height:.95;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.5);text-align:center;padding:0 24px;transition:color .6s var(--ease),-webkit-text-stroke-color .6s var(--ease)}
+.hpanel:hover .him.cover .cvw{color:var(--lime);-webkit-text-stroke-color:var(--lime)}
+.him.cover .cmk{position:absolute;right:18px;bottom:14px;height:34px;width:auto;opacity:.9}
+.him.cover.lime{background:var(--lime);border:none}
+.him.cover.lime .cvw{-webkit-text-stroke-color:rgba(11,11,11,.65)}
+.hpanel:hover .him.cover.lime .cvw{color:#0b0b0b;-webkit-text-stroke-color:#0b0b0b}
+.him.cover.lime .cmk{filter:brightness(0)}
+.him.cover .tagl{position:absolute;left:18px;top:14px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.him.cover.lime .tagl{color:rgba(11,11,11,.6)}
