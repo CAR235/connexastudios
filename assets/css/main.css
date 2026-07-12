@@ -780,3 +780,15 @@ section,header,footer{position:relative;z-index:1}
   .hero .corner{display:none}
   .stats-lime .stats{grid-template-columns:1fr 1fr}
 }
+
+/* ===================== HYBRID BREATHING ===================== */
+/* mix: densità poster + respiro della versione precedente */
+.sec{padding:clamp(88px,12vh,160px) 0}
+.sec-head{margin-bottom:clamp(44px,6vh,84px)}
+.lime-band{min-height:70vh}
+.tile{min-height:min(48vh,420px)}
+.tiles .tile.rv{opacity:1;transform:none} /* gestite dal batch JS */
+@media(max-width:900px){
+  .sec{padding:clamp(64px,9vh,100px) 0}
+  .rv{transform:translateY(40px)}
+}

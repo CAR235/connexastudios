@@ -7,7 +7,7 @@ document.documentElement.classList.remove('no-js');
 
 /* ---------- Lenis smooth scroll ---------- */
 let lenis = null;
-if (!reduced && typeof Lenis !== 'undefined') {
+if (!reduced && !isMobile && typeof Lenis !== 'undefined') {
   lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(t => lenis.raf(t * 1000));
@@ -128,8 +128,14 @@ if (lenis) {
 
 /* ---------- Reveals ---------- */
 document.querySelectorAll('.rv').forEach(el => {
-  gsap.to(el, { opacity: 1, y: 0, duration: 1.1, ease: 'power4.out', scrollTrigger: { trigger: el, start: 'top 88%' } });
+  gsap.to(el, { opacity: 1, y: 0, duration: isMobile ? .9 : 1.1, ease: 'power4.out', scrollTrigger: { trigger: el, start: isMobile ? 'top 92%' : 'top 88%' } });
 });
+// tiles: entrata a cascata
+const tilesEls = gsap.utils.toArray('.tiles .tile');
+if (tilesEls.length && !reduced) {
+  gsap.set(tilesEls, { opacity: 0, y: 40 });
+  ScrollTrigger.batch(tilesEls, { start: 'top 90%', onEnter: b => gsap.to(b, { opacity: 1, y: 0, duration: .8, stagger: .12, ease: 'power3.out' }) });
+}
 document.querySelectorAll('.split').forEach(h => {
   const html = h.innerHTML;
   h.innerHTML = '<span style="display:block;overflow:hidden"><span class="split-in" style="display:block">' + html + '</span></span>';
