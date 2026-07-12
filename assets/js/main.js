@@ -303,8 +303,17 @@ if (htrack && hasHover && isMobile) {
 /* ---------- Image scale-in on enter ---------- */
 document.querySelectorAll('.chero-img, .cgal .g, .founder .fimg').forEach(box => {
   if (reduced) return;
-  gsap.fromTo(box, { scale: .92, opacity: .4 }, { scale: 1, opacity: 1, duration: 1.2, ease: 'power3.out',
+  gsap.fromTo(box, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.1, ease: 'power4.inOut',
     scrollTrigger: { trigger: box, start: 'top 85%' } });
+  const im = box.querySelector('img');
+  if (im) gsap.fromTo(im, { scale: 1.25 }, { scale: 1, duration: 1.4, ease: 'power3.out',
+    scrollTrigger: { trigger: box, start: 'top 85%' } });
+});
+// citazioni dei casi: wipe laterale
+document.querySelectorAll('.cquote').forEach(q => {
+  if (reduced) return;
+  gsap.fromTo(q, { clipPath: 'inset(0 100% 0 0)' }, { clipPath: 'inset(0 0% 0 0)', duration: 1, ease: 'power4.inOut',
+    scrollTrigger: { trigger: q, start: 'top 82%' } });
 });
 
 /* ---------- Scroll progress bar ---------- */
