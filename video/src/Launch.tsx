@@ -89,15 +89,32 @@ const SiteScroll = () => {
           Il sito — dal vivo
         </span>
       </BlurIn>
+      {/* iPhone mockup in puro codice */}
       <div style={{
-        width: 820, height: 1460, borderRadius: 44, overflow: "hidden",
-        border: "1px solid rgba(255,255,255,.22)",
-        boxShadow: "0 60px 160px rgba(0,0,0,.6)",
+        position: "relative", width: 744, height: 1366,
         opacity: enter,
         transform: `scale(${zoom * (0.94 + enter * 0.06)}) translateY(${(1 - enter) * 90}px)`,
         filter: `blur(${(1 - enter) * 16}px)`,
       }}>
-        <OffthreadVideo src={staticFile("site-scroll.mp4")} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        {/* tasti laterali */}
+        <div style={{ position: "absolute", left: -6, top: 280, width: 6, height: 64, background: "#2a2a2a", borderRadius: "4px 0 0 4px" }} />
+        <div style={{ position: "absolute", left: -6, top: 380, width: 6, height: 108, background: "#2a2a2a", borderRadius: "4px 0 0 4px" }} />
+        <div style={{ position: "absolute", left: -6, top: 512, width: 6, height: 108, background: "#2a2a2a", borderRadius: "4px 0 0 4px" }} />
+        <div style={{ position: "absolute", right: -6, top: 400, width: 6, height: 160, background: "#2a2a2a", borderRadius: "0 4px 4px 0" }} />
+        {/* scocca in titanio */}
+        <div style={{
+          position: "absolute", inset: 0, borderRadius: 96,
+          background: "linear-gradient(145deg,#3a3a3c,#1c1c1e 40%,#2c2c2e)",
+          boxShadow: "0 80px 200px rgba(0,0,0,.7), inset 0 2px 3px rgba(255,255,255,.25), inset 0 -2px 3px rgba(0,0,0,.6)",
+        }} />
+        {/* schermo */}
+        <div style={{ position: "absolute", inset: 22, borderRadius: 78, overflow: "hidden", background: "#000" }}>
+          <OffthreadVideo src={staticFile("site-scroll.mp4")} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+          {/* riflesso diagonale sottile */}
+          <div style={{ position: "absolute", inset: 0, background: "linear-gradient(115deg,rgba(255,255,255,.07) 0%,transparent 28%)" }} />
+        </div>
+        {/* dynamic island */}
+        <div style={{ position: "absolute", top: 40, left: "50%", transform: "translateX(-50%)", width: 220, height: 60, borderRadius: 40, background: "#000", boxShadow: "inset 0 0 4px rgba(255,255,255,.08)" }} />
       </div>
     </AbsoluteFill>
   );
