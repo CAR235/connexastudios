@@ -591,3 +591,38 @@ h1,h2,h3,h4,.btn,.eyebrow,.nav-links a{font-family:'Encode Sans',sans-serif}
 .him.cover.lime .cmk{filter:brightness(0)}
 .him.cover .tagl{position:absolute;left:18px;top:14px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);font-weight:600}
 .him.cover.lime .tagl{color:rgba(11,11,11,.6)}
+
+/* ===================== FULL-SITE VERKZ ADAPT ===================== */
+/* rebuilt logo: C mark + cut wordmark (Chakra Petch) */
+.logo{display:flex;align-items:center;gap:10px}
+.logo .lmk{height:20px;width:auto}
+.logo .logow{font-family:'Chakra Petch',sans-serif;font-weight:700;font-size:19px;letter-spacing:.01em;color:var(--white);line-height:1}
+.logo .logow sup{color:var(--lime);font-size:9px;margin-left:2px}
+.ft-brand .logo .lmk{height:26px}
+.ft-brand .logo .logow{font-size:24px}
+
+/* page-hero pattern strip */
+.page-hero .cpattern{margin-top:clamp(36px,5vh,56px)}
+.cpattern.on-dark img{filter:none;height:clamp(26px,3vw,40px);opacity:.85}
+
+/* final CTA bands go full lime on every page */
+.cta-band{background:var(--lime);color:#0b0b0b}
+.cta-band .eyebrow{color:rgba(11,11,11,.6)}
+.cta-band .eyebrow::before{background:#0b0b0b}
+.cta-band h2{color:#0b0b0b}
+.cta-band h2 em{color:#0b0b0b;box-shadow:inset 0 -0.35em rgba(11,11,11,.14)}
+.cta-band h2 strong{box-shadow:inset 0 -0.42em rgba(11,11,11,.16)}
+.cta-band .row p{color:rgba(11,11,11,.65)!important}
+.cta-band .btn-lime{background:#0b0b0b;color:var(--lime)}
+.cta-band .btn-lime::before{background:#1c1c1c}
+
+/* case pages: quote becomes lime block */
+.cquote{background:var(--lime);color:#0b0b0b;border:none;padding:clamp(24px,3vw,40px);font-weight:700}
+/* case hero subtitle + meta accents */
+.cmeta div strong{font-weight:700}
+.case-hero .clabel{font-weight:700}
+/* next-project link full lime hover */
+.cnext a:hover .nname{color:var(--lime)}
+
+/* store products squared to line */
+.product{border-radius:0}
