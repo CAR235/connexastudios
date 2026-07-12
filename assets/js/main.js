@@ -17,7 +17,7 @@ if (!reduced && typeof Lenis !== 'undefined') {
 /* ---------- Page transition curtain ---------- */
 const curtain = document.createElement('div');
 curtain.className = 'curtain';
-curtain.innerHTML = '<div class="c2"></div><div class="c1"></div><div class="c-logo"><img src="assets/img/logo-mark.png" alt=""></div>';
+curtain.innerHTML = '<div class="c2"></div><div class="c1"></div><div class="c-logo"><img src="assets/img/mark-lime.svg" alt=""></div>';
 document.body.appendChild(curtain);
 const c1 = curtain.querySelector('.c1'), c2 = curtain.querySelector('.c2'), cl = curtain.querySelector('.c-logo');
 
