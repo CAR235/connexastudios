@@ -262,29 +262,19 @@ document.querySelectorAll('.manifesto').forEach(el => {
   walk(el);
   const words = el.querySelectorAll('.w');
   gsap.to(words, {
-    opacity: 1, stagger: .06, ease: 'none',
-    scrollTrigger: { trigger: el, start: 'top 78%', end: 'bottom 45%', scrub: .4 }
+    opacity: 1, stagger: .045, duration: .5, ease: 'power2.out',
+    scrollTrigger: { trigger: el, start: 'top 85%', once: true }
   });
 });
 
-/* ---------- Horizontal pinned work gallery ---------- */
-const hwork = document.querySelector('.hwork');
-if (hwork && !isMobile && !reduced) {
-  const track = hwork.querySelector('.hwork-track');
-  const bar = hwork.querySelector('.hwork-progress i');
-  const dist = () => track.scrollWidth - innerWidth;
-  const tl = gsap.to(track, {
-    x: () => -dist(), ease: 'none',
-    scrollTrigger: {
-      trigger: hwork, start: 'top top', end: () => '+=' + dist(),
-      pin: true, scrub: .6, invalidateOnRefresh: true,
-      onUpdate: self => { if (bar) bar.style.transform = 'scaleX(' + self.progress + ')'; }
-    }
-  });
-  hwork.querySelectorAll('.hpanel .him img').forEach(img => {
-    gsap.fromTo(img, { xPercent: -6 }, { xPercent: 6, ease: 'none',
-      scrollTrigger: { trigger: img.closest('.hpanel'), containerAnimation: tl, start: 'left right', end: 'right left', scrub: true } });
-  });
+/* ---------- Work gallery: native horizontal scroll + drag ---------- */
+const htrack = document.querySelector('.hwork-track');
+if (htrack && hasHover) {
+  let down = false, sx = 0, sl = 0;
+  htrack.addEventListener('pointerdown', e => { down = true; sx = e.clientX; sl = htrack.scrollLeft; htrack.setPointerCapture(e.pointerId); });
+  htrack.addEventListener('pointermove', e => { if (down) htrack.scrollLeft = sl - (e.clientX - sx); });
+  ['pointerup','pointercancel'].forEach(ev => htrack.addEventListener(ev, () => down = false));
+  htrack.addEventListener('click', e => { if (Math.abs(htrack.scrollLeft - sl) > 6 && e.target.closest('a')) e.preventDefault(); }, true);
 }
 
 /* ---------- Image scale-in on enter ---------- */
@@ -306,18 +296,11 @@ document.querySelectorAll('.chero-img, .cgal .g, .founder .fimg').forEach(box =>
   });
 })();
 
-/* ---------- Giant wordmark: scrub split on scroll ---------- */
-const wm = document.querySelector('.wordmark');
-if (wm && !reduced) {
-  const solid = wm.querySelector('.wm.solid'), ghost = wm.querySelector('.wm.ghost');
-  gsap.to(solid, { xPercent: -14, ease: 'none', scrollTrigger: { trigger: wm, start: 'top top', end: '+=120%', scrub: .5 } });
-  gsap.to(ghost, { xPercent: 10, ease: 'none', scrollTrigger: { trigger: wm, start: 'top top', end: '+=120%', scrub: .5 } });
-}
-
 /* ---------- Diagonal kinetic band: scroll-driven opposite rows ---------- */
 document.querySelectorAll('.diag .row').forEach(row => {
   const dir = +row.dataset.dir || 1;
-  gsap.fromTo(row, { xPercent: dir * -12 }, { xPercent: dir * 2, ease: 'none',
+  const from = dir > 0 ? 0 : -10, to = dir > 0 ? -10 : 0;
+  gsap.fromTo(row, { xPercent: from }, { xPercent: to, ease: 'none',
     scrollTrigger: { trigger: row.closest('.diag'), start: 'top bottom', end: 'bottom top', scrub: .4 } });
 });
 
@@ -335,6 +318,23 @@ if (hasHover && !reduced) {
     });
   });
 }
+
+/* ---------- Safety net: reveal anything stuck hidden ---------- */
+setInterval(() => {
+  document.querySelectorAll('.rv').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight * .98 && r.bottom > 0 && +getComputedStyle(el).opacity < .05) {
+      gsap.to(el, { opacity: 1, y: 0, duration: .6, ease: 'power2.out' });
+    }
+  });
+  document.querySelectorAll('.split-in').forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight * .98 && r.bottom > 0) {
+      const m = new DOMMatrixReadOnly(getComputedStyle(el).transform === 'none' ? undefined : getComputedStyle(el).transform);
+      if (Math.abs(m.m42) > r.height * .5) gsap.to(el, { yPercent: 0, y: 0, duration: .6, ease: 'power2.out' });
+    }
+  });
+}, 1500);
 
 /* ---------- Run page-in ---------- */
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });

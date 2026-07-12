@@ -448,3 +448,33 @@ h1 em,h2 em,h3 em,.manifesto em{color:var(--lime)}
 .diag .row{font-weight:600}
 .marquee-track span{font-weight:500;text-transform:uppercase;font-size:clamp(15px,1.4vw,19px);letter-spacing:.04em}
 .loader .lg{font-weight:600}
+
+/* ===================== STABILIZATION PASS ===================== */
+/* work gallery: native horizontal scroll, no pinning */
+.hwork{padding:clamp(80px,12vh,140px) 0}
+.hwork-head{position:static;margin-bottom:clamp(36px,5vh,60px)}
+.hwork-track{height:auto;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;-ms-overflow-style:none;cursor:grab;padding:24px 6vw 12px;align-items:flex-start;-webkit-overflow-scrolling:touch}
+.hwork-track::-webkit-scrollbar{display:none}
+.hwork-track:active{cursor:grabbing}
+.hwork-progress{display:none}
+.hpanel{user-select:none}
+.hpanel .him img{pointer-events:none}
+@media(max-width:900px){.hwork-track{flex-direction:row;padding:12px 20px}}
+.hpanel{width:min(58vw,760px)}
+@media(max-width:900px){.hpanel{width:82vw;margin-right:20px}}
+
+/* diagonal band: straight, contained */
+.diag .inner{transform:none}
+.diag{padding:clamp(40px,6vh,70px) 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.diag .row{font-size:clamp(30px,5vw,72px)}
+
+/* wordmark: never clip */
+.wordmark .wm{font-size:clamp(52px,14vw,235px)}
+.wordmark .wm.ghost{margin-left:4vw}
+
+/* manifesto words: readable even before JS */
+.manifesto .w{opacity:.25}
+.no-js .manifesto .w{opacity:1}
+
+/* rotor: keep clear of nav */
+.rotor{top:22vh!important}
