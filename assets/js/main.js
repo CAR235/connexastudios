@@ -346,6 +346,48 @@ if (!reduced) {
   });
 }
 
+/* ---------- Scroll progress bar ---------- */
+(() => {
+  const sp = document.createElement('div');
+  sp.className = 'sprog'; sp.innerHTML = '<i></i>';
+  document.body.appendChild(sp);
+  const bar = sp.firstChild;
+  ScrollTrigger.create({
+    start: 0, end: () => document.documentElement.scrollHeight - innerHeight,
+    onUpdate: self => bar.style.transform = 'scaleX(' + self.progress + ')'
+  });
+})();
+
+/* ---------- Giant wordmark: scrub split on scroll ---------- */
+const wm = document.querySelector('.wordmark');
+if (wm && !reduced) {
+  const solid = wm.querySelector('.wm.solid'), ghost = wm.querySelector('.wm.ghost');
+  gsap.to(solid, { xPercent: -14, ease: 'none', scrollTrigger: { trigger: wm, start: 'top top', end: '+=120%', scrub: .5 } });
+  gsap.to(ghost, { xPercent: 10, ease: 'none', scrollTrigger: { trigger: wm, start: 'top top', end: '+=120%', scrub: .5 } });
+}
+
+/* ---------- Diagonal kinetic band: scroll-driven opposite rows ---------- */
+document.querySelectorAll('.diag .row').forEach(row => {
+  const dir = +row.dataset.dir || 1;
+  gsap.fromTo(row, { xPercent: dir * -12 }, { xPercent: dir * 2, ease: 'none',
+    scrollTrigger: { trigger: row.closest('.diag'), start: 'top bottom', end: 'bottom top', scrub: .4 } });
+});
+
+/* ---------- Scramble hover on big words ---------- */
+if (hasHover && !reduced) {
+  const CH2 = 'XO#%&@+=/';
+  document.querySelectorAll('[data-scramble]').forEach(a => {
+    const orig = a.textContent; let iv2;
+    a.addEventListener('mouseenter', () => {
+      let i = 0; clearInterval(iv2);
+      iv2 = setInterval(() => {
+        a.textContent = orig.split('').map((c, j) => j < i ? c : CH2[Math.random() * CH2.length | 0]).join('');
+        if (++i > orig.length) { clearInterval(iv2); a.textContent = orig; }
+      }, 34);
+    });
+  });
+}
+
 /* ---------- Run page-in ---------- */
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 pageIn();

@@ -54,34 +54,40 @@
 <!-- HERO -->
 <header class="hero">
   <canvas id="heroCanvas"></canvas>
+  <div class="rotor" style="right:clamp(20px,6vw,90px);top:16vh">
+    <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+    <text><textPath href="#circ">RESTIAMO CONNESSI · CREATIVE STUDIO · DAL 2024 ·</textPath></text></svg>
+    <span class="dot"></span>
+  </div>
   <div class="wrap">
-    <div class="hero-grid">
-      <h1 id="heroH1">
-        <span class="ln"><span>Diamo forma alla</span></span>
-        <span class="ln"><span><em class="mark">visione</em> del tuo brand.</span></span>
-      </h1>
-      <div class="hero-sub" id="heroSub">
-        <p>Connexa Studios è il punto di incontro tra creatività e strategia. Costruiamo brand, trasformiamo visioni in realtà e diamo un'identità unica al tuo business.</p>
-      </div>
-      <div class="hero-actions" id="heroActions">
-        <a href="contatti.html" class="btn btn-lime magnetic"><span class="lbl">Prenota una call</span> <span class="arr">↗</span></a>
-        <a href="progetti.html" class="btn btn-ghost magnetic"><span class="lbl">Guarda i progetti</span></a>
-      </div>
+    <h1 class="wordmark" id="heroH1" aria-label="Connexa Studios — diamo forma alla visione del tuo brand">
+      <span class="ln"><span class="wm solid">Connexa<sup>®</sup></span></span>
+      <span class="ln"><span class="wm ghost">Studio<b>s</b></span></span>
+    </h1>
+    <div class="hero-tag" id="heroSub">
+      <p>Il punto di incontro tra creatività e strategia. Costruiamo brand, trasformiamo visioni in realtà e diamo un'identità unica al tuo business.</p>
+      <div class="idx">Diamo forma alla visione<br>del tuo brand <b>●</b><br>Sarno — Italia</div>
+    </div>
+    <div class="hero-actions" id="heroActions" style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;position:relative;z-index:1">
+      <a href="contatti.html" class="btn btn-lime magnetic"><span class="lbl">Prenota una call</span> <span class="arr">↗</span></a>
+      <a href="progetti.html" class="btn btn-ghost magnetic"><span class="lbl">Guarda i progetti</span></a>
     </div>
     <div class="hero-meta" id="heroMeta">
       <span>Creative studio indipendente</span>
       <span>Brand <b>·</b> Web <b>·</b> Contenuti <b>·</b> Campagne</span>
-      <span>Sarno, Italia — <b>restiamo connessi</b></span>
+      <span><b>restiamo connessi</b></span>
     </div>
   </div>
   <div class="scroll-hint">Scroll</div>
 </header>
 
-<div class="marquee" aria-hidden="true">
-  <div class="marquee-track">
-    <span>Brand identity <i>●</i></span><span>Naming <i>●</i></span><span>Visual identity <i>●</i></span><span>Web design <i>●</i></span><span>Strategia social <i>●</i></span><span>Contenuti visivi <i>●</i></span><span>Campagne <i>●</i></span><span>Product design <i>●</i></span>
+<!-- DIAGONAL KINETIC BAND -->
+<section class="diag" aria-hidden="true">
+  <div class="inner">
+    <div class="row" data-dir="1">Brand identity <i>●</i> Web design <i>●</i> <em>Strategia social</em> <i>●</i> Naming <i>●</i> Campagne <i>●</i> Brand identity <i>●</i> Web design <i>●</i> <em>Strategia social</em> <i>●</i> Naming <i>●</i> Campagne <i>●</i>&nbsp;</div>
+    <div class="row" data-dir="-1"><em>Costruiamo percezione</em> <i>●</i> Non contenuti <i>●</i> <em>Costruiamo percezione</em> <i>●</i> Non contenuti <i>●</i> <em>Costruiamo percezione</em> <i>●</i> Non contenuti <i>●</i>&nbsp;</div>
   </div>
-</div>
+</section>
 
 <!-- POSITIONING -->
 <section class="sec">
@@ -113,18 +119,21 @@
       <h2 class="split">Un unico sistema. <em>Tre leve.</em></h2>
     </div>
     <div class="svc-row rv">
+      <span class="ghostn">01</span>
       <span class="svc-num">01</span>
       <h3 class="svc-name">Brand Identity<em>logo · palette · guidelines</em></h3>
       <p class="svc-desc"><b>Diamo un volto al tuo brand.</b> Loghi, palette e linee guida per un'identità solida e scalabile.</p>
       <div class="svc-tags"><span>Logo e varianti</span><span>Palette e tipografia</span><span>Brand book &amp; guidelines</span></div>
     </div>
     <div class="svc-row rv">
+      <span class="ghostn">02</span>
       <span class="svc-num">02</span>
       <h3 class="svc-name">Comunicazione &amp; Strategia<em>tono · messaggi · posizionamento</em></h3>
       <p class="svc-desc"><b>Più di un logo, una visione.</b> Tono di voce, messaggi chiave e strategie per connettere brand e persone.</p>
       <div class="svc-tags"><span>Strategia comunicativa</span><span>Tono di voce &amp; storytelling</span><span>Campagne e posizionamento</span></div>
     </div>
     <div class="svc-row rv">
+      <span class="ghostn">03</span>
       <span class="svc-num">03</span>
       <h3 class="svc-name">Digital &amp; Social Media<em>contenuti · editoriale · adv</em></h3>
       <p class="svc-desc"><b>Gestiamo la tua presenza online.</b> Contenuti, piani editoriali e ADV che generano risultati.</p>
@@ -216,15 +225,16 @@
 </section>
 
 <!-- FINAL CTA -->
-<section class="cta-band">
+<section class="cta-band" style="padding-bottom:0">
   <div class="wrap">
     <span class="eyebrow rv" style="margin-bottom:44px">Restiamo connessi</span>
     <h2 class="rv">Se il tuo brand sembra più piccolo di quello che vale, <strong>il problema non è solo estetico.</strong></h2>
-    <div class="row rv">
-      <p>Ogni grande brand inizia da una conversazione. Raccontaci il tuo progetto: ti rispondiamo il prima possibile.</p>
-      <a href="contatti.html" class="btn btn-lime magnetic"><span class="lbl">Parliamone</span> <span class="arr">↗</span></a>
-    </div>
   </div>
+</section>
+<section class="punchline">
+  <span class="plbl rv">Ogni grande brand inizia da una conversazione</span>
+  <a href="contatti.html" class="magnetic" data-scramble>Parliamone</a>
+  <p class="sub rv">info@connexastudios.com — rispondiamo il prima possibile</p>
 </section>
 
 <footer>
@@ -401,6 +411,7 @@
   }
   if(reduced){loader.remove();return}
   gsap.set('#heroH1 .ln>span',{yPercent:115});
+  gsap.set('#heroSub,#heroActions,#heroMeta',{opacity:0,y:30});
   gsap.set('#loaderLogo',{y:'110%'});
   const pct=document.getElementById('loaderPct');
   const tl=gsap.timeline();
