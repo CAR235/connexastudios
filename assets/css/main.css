@@ -478,3 +478,32 @@ h1 em,h2 em,h3 em,.manifesto em{color:var(--lime)}
 
 /* rotor: keep clear of nav */
 .rotor{top:22vh!important}
+
+/* ===================== IDENTITY & SOUL PASS ===================== */
+/* real logo in nav / footer */
+.logo img{height:22px;width:auto;display:block;transition:transform .5s var(--ease)}
+.logo:hover img{transform:translateY(-2px)}
+.ft-brand .logo img{height:30px}
+
+/* lime C mark floating in hero */
+.hero-mark{position:absolute;right:clamp(-40px,2vw,80px);bottom:14vh;width:clamp(180px,24vw,420px);opacity:.14;pointer-events:none;z-index:0;will-change:transform}
+.hero-mark img{width:100%}
+@media(max-width:900px){.hero-mark{width:200px;right:-40px;bottom:20vh}}
+
+/* curtain mark */
+.curtain .c-logo img{width:clamp(56px,7vw,96px);display:block}
+
+/* loader mark pulse */
+.loader .mark{width:clamp(64px,8vw,110px)}
+.loader .mark img{width:100%;animation:markpulse 1.2s var(--ease) infinite}
+@keyframes markpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+
+/* gallery image life */
+.cgal .g img,.chero-img img{transition:transform 1.2s var(--ease)}
+.cgal .g:hover img,.chero-img:hover img{transform:scale(1.05)}
+
+/* marquee mark separator */
+.marquee-track img.msep{height:.9em;width:auto;display:inline-block;vertical-align:middle;margin:0 8px}
+
+/* link underline life on footer/big links */
+.ft-big{text-decoration:none}

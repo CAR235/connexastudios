@@ -17,7 +17,7 @@ if (!reduced && typeof Lenis !== 'undefined') {
 /* ---------- Page transition curtain ---------- */
 const curtain = document.createElement('div');
 curtain.className = 'curtain';
-curtain.innerHTML = '<div class="c2"></div><div class="c1"></div><div class="c-logo">Connexa<sup style="color:var(--lime);font-size:.5em">®</sup></div>';
+curtain.innerHTML = '<div class="c2"></div><div class="c1"></div><div class="c-logo"><img src="assets/img/logo-mark.png" alt=""></div>';
 document.body.appendChild(curtain);
 const c1 = curtain.querySelector('.c1'), c2 = curtain.querySelector('.c2'), cl = curtain.querySelector('.c-logo');
 
@@ -36,7 +36,7 @@ function pageOut(href) {
   const tl = gsap.timeline({ onComplete: () => location.href = href });
   tl.to(c1, { scaleY: 1, duration: .55, ease: 'power4.inOut' })
     .to(c2, { scaleY: 1, duration: .55, ease: 'power4.inOut' }, .12)
-    .to(cl, { opacity: 1, duration: .3 }, .4);
+    .fromTo(cl, { opacity: 0, scale: .6 }, { opacity: 1, scale: 1, duration: .4, ease: 'back.out(2)' }, .4);
 }
 document.addEventListener('click', e => {
   const a = e.target.closest('a');
@@ -317,6 +317,31 @@ if (hasHover && !reduced) {
       }, 34);
     });
   });
+}
+
+/* ---------- Section heading parallax ---------- */
+if (!reduced && !isMobile) {
+  document.querySelectorAll('.sec-head h2, .case-hero h1').forEach(h => {
+    gsap.fromTo(h, { y: 50 }, { y: -50, ease: 'none',
+      scrollTrigger: { trigger: h, start: 'top bottom', end: 'bottom top', scrub: .6 } });
+  });
+  document.querySelectorAll('.ghostn').forEach(g => {
+    gsap.fromTo(g, { yPercent: -35 }, { yPercent: -65, ease: 'none',
+      scrollTrigger: { trigger: g.closest('.svc-row'), start: 'top bottom', end: 'bottom top', scrub: .6 } });
+  });
+}
+
+/* ---------- Hero mark: float + scroll rotation ---------- */
+const hm = document.querySelector('.hero-mark');
+if (hm && !reduced) {
+  gsap.to(hm, { y: -24, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  gsap.to(hm, { rotate: 28, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .5 } });
+  if (hasHover) {
+    window.addEventListener('mousemove', e => {
+      const dx = (e.clientX / innerWidth - .5), dy = (e.clientY / innerHeight - .5);
+      gsap.to(hm, { x: dx * 30, duration: 1.2, ease: 'power2.out' });
+    });
+  }
 }
 
 /* ---------- Safety net: reveal anything stuck hidden ---------- */
