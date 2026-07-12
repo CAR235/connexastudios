@@ -663,3 +663,7 @@ h1 em,h2 em,h3 em,
 /* wordmark hero: mai overflow */
 .wordmark .wm{font-size:clamp(40px,13vw,220px)}
 .wordmark{overflow:hidden}
+
+/* logo ufficiale definitivo (SVG completo: C + connexa + ©) */
+.logo .lfull{height:20px;width:auto;display:block}
+.ft-brand .logo .lfull{height:28px}
