@@ -507,3 +507,56 @@ h1 em,h2 em,h3 em,.manifesto em{color:var(--lime)}
 
 /* link underline life on footer/big links */
 .ft-big{text-decoration:none}
+
+/* ===================== VERKZ-LINE PASS ===================== */
+:root{--serif:'Encode Sans',sans-serif;--sans:'Kanit',sans-serif;--ink:#0f0f0f;--ink-deep:#0b0b0b;--grigio:#c6c6c6}
+body{font-weight:300}
+h1,h2,h3,h4,.btn,.eyebrow,.nav-links a{font-family:'Encode Sans',sans-serif}
+.wordmark .wm{font-weight:800}
+.wordmark .wm.ghost b{color:var(--lime)}
+.page-hero h1,.sec-head h2,.case-hero h1{font-weight:800}
+.svc-name,.pitem h3,.hpanel .hinfo h3,.founder h3,.product h3,.csec .cnum h2,.nname,.mth-step h3,.value h4{font-weight:700}
+.manifesto,.pos-claim,.cquote{font-weight:600}
+.btn{font-weight:700}
+.stat .num,.ghostn,.mth-step .n,.hpanel .hnum{font-weight:800}
+
+/* LIME BLOCK sections: manifesto band + punchline */
+.lime-band{background:var(--lime);color:#0b0b0b;padding:clamp(80px,12vh,160px) 0;position:relative;overflow:hidden}
+.lime-band .manifesto{color:#0b0b0b;max-width:26ch}
+.lime-band .manifesto .w{opacity:.3}
+.lime-band .manifesto em,.lime-band .manifesto .lm{color:#0b0b0b;background:none;position:relative}
+.lime-band .manifesto .lm{box-shadow:inset 0 -0.35em rgba(11,11,11,.15)}
+.lime-band .eyebrow{color:rgba(11,11,11,.6)}
+.lime-band .eyebrow::before{background:#0b0b0b}
+
+/* C-mark pattern strip (like Verkz zigzag) */
+.cpattern{display:flex;gap:clamp(14px,2.5vw,36px);margin-top:clamp(48px,7vh,80px);overflow:hidden}
+.cpattern img{height:clamp(44px,6vw,84px);width:auto;filter:brightness(0);flex-shrink:0;opacity:.9}
+.on-dark .cpattern img{filter:none}
+
+/* punchline goes lime */
+.punchline{background:var(--lime)}
+.punchline .plbl{color:rgba(11,11,11,.6)}
+.punchline a{color:transparent;-webkit-text-stroke:2px #0b0b0b}
+.punchline a:hover{color:#0b0b0b;-webkit-text-stroke-color:#0b0b0b}
+.punchline .sub{color:rgba(11,11,11,.65)}
+
+/* diag band: lime bg, black type — the Verkz statement strip */
+.diag{background:var(--lime);border:none;padding:clamp(48px,7vh,90px) 0}
+.diag .row{color:#0b0b0b;font-weight:800}
+.diag .row em{color:transparent;-webkit-text-stroke:1.5px rgba(11,11,11,.55)}
+.diag .row i{color:#0b0b0b}
+
+/* CTA band heading highlight now solid lime block on dark */
+.cta-band h2 strong{background:none;box-shadow:inset 0 -0.42em rgba(200,245,4,.9)}
+.cta-band h2.lit strong{background:none}
+
+/* nav CTA: pill like Verkz "SEGUIR" */
+.nav-cta{border-radius:999px}
+.btn{border-radius:999px;padding:16px 32px}
+
+/* footer big text solid weight */
+.ft-big{font-weight:800;-webkit-text-stroke-width:1.5px}
+
+/* eyebrow chip */
+.eyebrow{font-weight:700}
