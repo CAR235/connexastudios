@@ -817,3 +817,12 @@ section,header,footer{position:relative;z-index:1}
   .scard{top:70px;min-height:calc(100dvh - 110px);padding:24px 20px}
   .scard h3{font-size:clamp(30px,10vw,54px)}
 }
+
+/* ===================== MOBILE = DESKTOP SCROLL FEEL ===================== */
+@media(max-width:900px){
+  /* galleria pinnata anche su mobile */
+  .hwork.pinned .hwork-track{flex-direction:row;height:100vh;align-items:center;padding:0 0 0 5vw;overflow:visible;scroll-snap-type:none}
+  .hwork.pinned .hpanel{width:84vw;margin-right:6vw;flex-shrink:0}
+  .hwork.pinned::after{display:none}
+  .hwork.pinned .hwork-progress{display:block;left:5vw;right:5vw}
+}

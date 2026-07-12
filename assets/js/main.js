@@ -7,8 +7,8 @@ document.documentElement.classList.remove('no-js');
 
 /* ---------- Lenis smooth scroll ---------- */
 let lenis = null;
-if (!reduced && !isMobile && typeof Lenis !== 'undefined') {
-  lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+if (!reduced && typeof Lenis !== 'undefined') {
+  lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), syncTouch: true, touchMultiplier: 1.3 });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(t => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
@@ -275,7 +275,7 @@ document.querySelectorAll('.manifesto').forEach(el => {
 
 /* ---------- Work gallery: pinned horizontal on desktop ---------- */
 const hwork2 = document.querySelector('.hwork');
-if (hwork2 && !isMobile && !reduced) {
+if (hwork2 && !reduced) {
   hwork2.classList.add('pinned');
   const track2 = hwork2.querySelector('.hwork-track');
   const bar2 = hwork2.querySelector('.hwork-progress i');
@@ -288,16 +288,6 @@ if (hwork2 && !isMobile && !reduced) {
       onUpdate: self => { if (bar2) bar2.style.transform = 'scaleX(' + self.progress + ')'; }
     }
   });
-}
-
-/* ---------- Work gallery: native horizontal scroll + drag (mobile) ---------- */
-const htrack = document.querySelector('.hwork-track');
-if (htrack && hasHover && isMobile) {
-  let down = false, sx = 0, sl = 0;
-  htrack.addEventListener('pointerdown', e => { down = true; sx = e.clientX; sl = htrack.scrollLeft; htrack.setPointerCapture(e.pointerId); });
-  htrack.addEventListener('pointermove', e => { if (down) htrack.scrollLeft = sl - (e.clientX - sx); });
-  ['pointerup','pointercancel'].forEach(ev => htrack.addEventListener(ev, () => down = false));
-  htrack.addEventListener('click', e => { if (Math.abs(htrack.scrollLeft - sl) > 6 && e.target.closest('a')) e.preventDefault(); }, true);
 }
 
 /* ---------- Image scale-in on enter ---------- */
