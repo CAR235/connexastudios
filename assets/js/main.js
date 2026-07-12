@@ -452,11 +452,18 @@ document.querySelectorAll('.faq-item').forEach(item => {
 (() => {
   const logo = document.querySelector('nav .logo');
   if (!logo) return;
-  let n = 0, t;
+  let n = 0, t, nav;
   logo.addEventListener('click', e => {
-    n++; clearTimeout(t); t = setTimeout(() => n = 0, 1500);
-    if (n >= 5) {
-      n = 0; e.preventDefault();
+    e.preventDefault(); e.stopPropagation();
+    n++; clearTimeout(t); clearTimeout(nav);
+    t = setTimeout(() => n = 0, 1500);
+    if (n < 5) {
+      // click normale: naviga solo se non arrivano altri click
+      nav = setTimeout(() => { if (n < 5) pageOut('index.html'); }, 400);
+      return;
+    }
+    {
+      n = 0;
       const f = document.createElement('div');
       f.style.cssText = 'position:fixed;inset:0;z-index:5000;background:#c8f504;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px';
       f.innerHTML = '<img src="assets/img/mark-black.svg" style="height:90px"><div style="font-family:Encode Sans,sans-serif;font-weight:800;font-size:clamp(28px,5vw,64px);color:#0b0b0b;text-transform:uppercase;letter-spacing:-.02em">Restiamo connessi</div>';
