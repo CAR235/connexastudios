@@ -448,6 +448,25 @@ document.querySelectorAll('.faq-item').forEach(item => {
   b.addEventListener('click', () => lenis ? lenis.scrollTo(0) : scrollTo({ top: 0, behavior: 'smooth' }));
 })();
 
+/* ---------- Easter egg: 5 click sul logo ---------- */
+(() => {
+  const logo = document.querySelector('nav .logo');
+  if (!logo) return;
+  let n = 0, t;
+  logo.addEventListener('click', e => {
+    n++; clearTimeout(t); t = setTimeout(() => n = 0, 1500);
+    if (n >= 5) {
+      n = 0; e.preventDefault();
+      const f = document.createElement('div');
+      f.style.cssText = 'position:fixed;inset:0;z-index:5000;background:#c8f504;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px';
+      f.innerHTML = '<img src="assets/img/mark-black.svg" style="height:90px"><div style="font-family:Encode Sans,sans-serif;font-weight:800;font-size:clamp(28px,5vw,64px);color:#0b0b0b;text-transform:uppercase;letter-spacing:-.02em">Restiamo connessi</div>';
+      document.body.appendChild(f);
+      gsap.from(f, { clipPath: 'circle(0% at 50% 50%)', duration: .6, ease: 'power4.out' });
+      setTimeout(() => gsap.to(f, { opacity: 0, duration: .5, onComplete: () => f.remove() }), 1600);
+    }
+  });
+})();
+
 /* ---------- Run page-in ---------- */
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 pageIn();
