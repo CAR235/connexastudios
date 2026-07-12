@@ -76,3 +76,15 @@ La stella polare visiva è il brand system **Verkz Company** (board Instagram co
 - `assets/img/logo-mark.png` — C lime (simbolo)
 - `assets/img/logo-full.png` — wordmark completo (in revisione da parte di Carmine)
 - Cache-busting: ogni deploy aggiorna `?v=` su CSS/JS
+
+---
+
+## Aggiornamenti 12/07/2026 (sera)
+
+- **Regola enfasi definitiva**: ogni parola enfatizzata è un chip `#0b0b0b` con testo lime, su qualsiasi sfondo. Mai sottolineature dello stesso colore dello sfondo.
+- **Logo definitivo**: SVG di Carmine (C + connexa ottagonale + ©), 5 varianti in `assets/img/`. Favicon = app icon lime (Asset 24).
+- **Cover progetti**: board art-directed in `assets/img/covers/` (web 1400×830 + Instagram 1080×1080). Sorgente rigenerabile: `covers.html` nello scratchpad di sessione.
+- **Pattern pagina interna**: hero → banda statement lime → contenuto → CTA lime. Case study: cover come sfondo hero + banda payoff + nav prev/next.
+- **Sezioni firma home**: card servizi impilate (sticky+squash), position statement ("Il mercato non premia il migliore..."), gallery orizzontale pinnata con cover.
+- **Easter egg**: 5 click rapidi sul logo → flash lime "RESTIAMO CONNESSI".
+- **Vincoli tecnici**: Lenis syncTouch su mobile; niente `filter` animati (solo transform/opacity); grana statica; cache-busting `?v=` a ogni deploy; verifica SEMPRE con screenshot Playwright prima del push.
