@@ -649,3 +649,17 @@ h1,h2,h3,h4,.btn,.eyebrow,.nav-links a{font-family:'Encode Sans',sans-serif}
 /* wordmark SVG proprietario in nav/footer */
 .logo .lww{height:15px;width:auto;display:block}
 .ft-brand .logo .lww{height:20px}
+
+/* ===================== FIX DEFINITIVO ENFASI ===================== */
+/* regola unica: OGNI enfasi è chip nero + testo lime, su qualsiasi sfondo */
+h1 em,h2 em,h3 em,
+.sec-head h2 em,.page-hero h1 em,.cta-band h2 em,.cta-band h2 strong,
+.manifesto em,.manifesto .lm,.wk-head h2 em,.team-grid h2 em,
+.lime-band .manifesto em,.lime-band .manifesto .lm{
+  background:#0b0b0b!important;color:var(--lime)!important;
+  box-shadow:none!important;font-style:normal;
+  padding:.02em .16em;box-decoration-break:clone;-webkit-box-decoration-break:clone
+}
+/* wordmark hero: mai overflow */
+.wordmark .wm{font-size:clamp(40px,13vw,220px)}
+.wordmark{overflow:hidden}

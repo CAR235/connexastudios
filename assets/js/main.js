@@ -338,7 +338,7 @@ if (hasHover && !reduced) {
 
 /* ---------- Hero wordmark: split & sink on scroll ---------- */
 const wmk = document.querySelector('.wordmark');
-if (wmk && !reduced) {
+if (wmk && !reduced && !isMobile) {
   const l1 = wmk.querySelector('.wm.solid'), l2 = wmk.querySelector('.wm.limef') || wmk.querySelector('.wm.ghost');
   const st = { trigger: '.hero', start: 'top top', end: 'bottom 30%', scrub: .5 };
   if (l1) gsap.to(l1, { xPercent: -12, opacity: .25, ease: 'none', scrollTrigger: st });
@@ -356,10 +356,6 @@ if (cpat && !reduced) {
 
 /* ---------- Section heading parallax ---------- */
 if (!reduced && !isMobile) {
-  document.querySelectorAll('.sec-head h2, .case-hero h1').forEach(h => {
-    gsap.fromTo(h, { y: 50 }, { y: -50, ease: 'none',
-      scrollTrigger: { trigger: h, start: 'top bottom', end: 'bottom top', scrub: .6 } });
-  });
   document.querySelectorAll('.ghostn').forEach(g => {
     gsap.fromTo(g, { yPercent: -35 }, { yPercent: -65, ease: 'none',
       scrollTrigger: { trigger: g.closest('.svc-row'), start: 'top bottom', end: 'bottom top', scrub: .6 } });
