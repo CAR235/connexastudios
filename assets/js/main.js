@@ -294,36 +294,6 @@ document.querySelectorAll('.chero-img, .cgal .g, .founder .fimg').forEach(box =>
     scrollTrigger: { trigger: box, start: 'top 85%' } });
 });
 
-/* ---------- Scroll-velocity skew (the page feels physical) ---------- */
-if (!reduced && !isMobile) {
-  const skewTargets = gsap.utils.toArray('.svc-row, .pitem, .stat, .value, .csec .cbody');
-  const proxy = { skew: 0 };
-  const skewSetter = gsap.quickSetter(skewTargets, 'skewY', 'deg');
-  const clamp = gsap.utils.clamp(-4, 4);
-  ScrollTrigger.create({
-    onUpdate: self => {
-      const skew = clamp(self.getVelocity() / -450);
-      if (Math.abs(skew) > Math.abs(proxy.skew)) {
-        proxy.skew = skew;
-        gsap.to(proxy, { skew: 0, duration: .8, ease: 'power3', overwrite: true, onUpdate: () => skewSetter(proxy.skew) });
-      }
-    }
-  });
-}
-
-/* ---------- Big heading chars float-in ---------- */
-if (!reduced) {
-  document.querySelectorAll('.case-hero h1 .ln>span, .page-hero h1 .ln>span').forEach(span => {
-    // wrap chars for a subtle per-char settle
-    const txt = span.innerHTML;
-    if (span.querySelector('em')) return; // keep markup-safe lines intact
-    span.innerHTML = txt.split('').map(c => c === ' ' ? ' ' : '<i style="display:inline-block;font-style:inherit">' + c + '</i>').join('');
-    gsap.from(span.querySelectorAll('i'), {
-      yPercent: 60, opacity: 0, duration: 1, stagger: .018, ease: 'power4.out', delay: .7
-    });
-  });
-}
-
 /* ---------- Scroll progress bar ---------- */
 (() => {
   const sp = document.createElement('div');
