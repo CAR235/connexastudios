@@ -850,3 +850,15 @@ section,header,footer{position:relative;z-index:1}
 .nl-form{display:flex;gap:0;border:1px solid var(--hair);max-width:440px}
 .nl-form input{flex:1;background:none;border:none;outline:none;color:var(--white);font-family:var(--sans);font-size:15px;padding:14px 18px}
 .nl-form button{background:var(--lime);color:#0b0b0b;border:none;font-family:'Encode Sans';font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.1em;padding:14px 22px;cursor:pointer}
+
+/* ===================== UX AUDIT PASS (ui-ux-pro-max) ===================== */
+/* focus visibile brandizzato (accessibilità CRITICAL) */
+:focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:2px}
+.btn:focus-visible,.nav-cta:focus-visible{outline-offset:4px}
+/* tap senza ritardo 300ms + target generosi */
+a,button,input,textarea{touch-action:manipulation}
+/* skip link per tastiera/screen reader */
+.skip-link{position:fixed;top:-60px;left:16px;z-index:3000;background:var(--lime);color:#0b0b0b;font-family:'Encode Sans';font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em;padding:12px 20px;transition:top .3s var(--ease)}
+.skip-link:focus{top:16px}
+/* selezione input mobile: niente zoom iOS (font >=16px) */
+.field input,.field textarea,.nl-form input{font-size:16px}
