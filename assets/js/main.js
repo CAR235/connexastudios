@@ -349,10 +349,10 @@ if (hasHover && !reduced) {
 const wmk = document.querySelector('.wordmark');
 if (wmk && !reduced) {
   const l1 = wmk.querySelector('.wm.solid'), l2 = wmk.querySelector('.wm.limef') || wmk.querySelector('.wm.ghost');
-  const amp = isMobile ? 5 : 12;
-  const st = { trigger: '.hero', start: 'top top', end: 'bottom 30%', scrub: .5 };
-  if (l1) gsap.to(l1, { xPercent: -amp, opacity: .25, ease: 'none', scrollTrigger: st });
-  if (l2) gsap.to(l2, { xPercent: amp * .8, opacity: .35, ease: 'none', scrollTrigger: st });
+  const amp = isMobile ? 3 : 7;
+  const st = { trigger: '.hero', start: 'top top', end: 'bottom 40%', scrub: .5 };
+  if (l1) gsap.to(l1, { xPercent: -amp, ease: 'none', scrollTrigger: st });
+  if (l2) gsap.to(l2, { xPercent: amp * .8, ease: 'none', scrollTrigger: st });
 }
 
 /* ---------- Lime band pattern: marches with scroll ---------- */
@@ -416,6 +416,14 @@ if (scards.length && !reduced) {
     gsap.to(shade, { opacity: .5, ease: 'none',
       scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top', scrub: true } });
   });
+}
+
+/* ---------- Gridlines globali ---------- */
+if (!document.querySelector('.gridlines')) {
+  const gl = document.createElement('div');
+  gl.className = 'gridlines'; gl.setAttribute('aria-hidden', 'true');
+  gl.innerHTML = '<i></i><i></i><i></i><i></i><i></i>';
+  document.body.prepend(gl);
 }
 
 /* ---------- FAQ accordion ---------- */

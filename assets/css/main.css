@@ -862,3 +862,12 @@ a,button,input,textarea{touch-action:manipulation}
 .skip-link:focus{top:16px}
 /* selezione input mobile: niente zoom iOS (font >=16px) */
 .field input,.field textarea,.nl-form input{font-size:16px}
+
+/* ===================== INNER PAGES UPGRADE ===================== */
+/* store: card con watermark C */
+.product{position:relative;background:var(--ink-deep)}
+.product::after{content:"";position:absolute;right:-40px;bottom:-50px;width:220px;height:248px;background:url('../img/mark-lime.svg') no-repeat center/contain;opacity:.06;pointer-events:none;transition:opacity .5s var(--ease)}
+.product:hover::after{opacity:.12}
+/* banda singola più compatta sulle interne */
+.page-hero + .diag .row{font-size:clamp(24px,4vw,58px)}
+.page-hero + .diag{padding:clamp(28px,4.5vh,52px) 0}
