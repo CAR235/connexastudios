@@ -697,3 +697,86 @@ h1 em,h2 em,h3 em,
   /* wordmark hero: un filo più grande su mobile */
   .wordmark .wm{font-size:clamp(46px,15vw,220px)}
 }
+
+/* ===================== POSTER REDESIGN ===================== */
+/* griglia editoriale di fondo: riempie il nero, dà struttura */
+.gridlines{position:fixed;inset:0;z-index:0;pointer-events:none;display:flex;justify-content:space-between;max-width:1400px;margin:0 auto;padding:0 clamp(20px,4vw,64px)}
+.gridlines i{width:1px;background:rgba(255,255,255,.05)}
+section,header,footer{position:relative;z-index:1}
+
+/* densità: meno aria, più materia */
+.sec{padding:clamp(64px,9vh,120px) 0}
+.sec-head{margin-bottom:clamp(36px,5vh,64px)}
+
+/* hero poster: angoli pieni */
+.hero{min-height:100dvh;justify-content:center;padding-bottom:0}
+.hero .corner{position:absolute;font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--mute);z-index:2}
+.hero .c-tl{top:96px;left:clamp(20px,4vw,64px)}
+.hero .c-tr{top:96px;right:clamp(20px,4vw,64px);text-align:right}
+.hero .c-bl{bottom:120px;left:clamp(20px,4vw,64px)}
+.hero .corner b{color:var(--lime);font-weight:600}
+.hero-strip{border-top:1px solid var(--hair);margin-top:clamp(32px,5vh,56px)}
+.hero-strip .cpattern{margin:0;padding:18px 0;justify-content:space-between}
+.hero-strip .cpattern img{height:clamp(20px,2.2vw,30px);filter:none;opacity:.9}
+.hero-meta{margin-top:0;border-top:1px solid var(--hair)}
+
+/* statement poster lime: C tagliata dal bordo */
+.lime-band{padding:clamp(72px,11vh,140px) 0;min-height:88vh;display:flex;align-items:center}
+.lime-band .bigC{position:absolute;right:-8vw;top:50%;transform:translateY(-50%);width:clamp(300px,36vw,600px);opacity:.999;pointer-events:none}
+.lime-band .bigC img{width:100%;filter:brightness(0)}
+.lime-band .wrap{position:relative;z-index:1;width:100%}
+.lime-band .manifesto{max-width:22ch}
+.lime-band .stamp{position:absolute;left:0;bottom:-30px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:rgba(11,11,11,.55);font-weight:700}
+
+/* servizi: piastrelle dense, gapless */
+.tiles{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--hair)}
+.tile{border:1px solid var(--hair);margin:-.5px;padding:clamp(28px,3.2vw,52px);position:relative;overflow:hidden;min-height:min(44vh,380px);display:flex;flex-direction:column;justify-content:flex-end;transition:background .5s var(--ease)}
+.tile:hover{background:rgba(255,255,255,.03)}
+.tile .tn{position:absolute;top:18px;right:22px;font-family:'Encode Sans';font-weight:800;font-size:clamp(60px,7vw,110px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.12);transition:-webkit-text-stroke-color .5s var(--ease)}
+.tile:hover .tn{-webkit-text-stroke-color:var(--lime)}
+.tile h3{font-family:'Encode Sans';font-weight:700;text-transform:uppercase;font-size:clamp(20px,2vw,30px);margin-bottom:12px}
+.tile p{color:var(--mute);font-size:14px;max-width:38ch;margin-bottom:16px}
+.tile .ttags{display:flex;gap:8px;flex-wrap:wrap}
+.tile .ttags span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--hair);padding:5px 10px;color:var(--mute)}
+.tile.lime{background:var(--lime);color:#0b0b0b}
+.tile.lime p{color:rgba(11,11,11,.65)}
+.tile.lime .tn{-webkit-text-stroke-color:rgba(11,11,11,.25)}
+.tile.lime .ttags span{border-color:rgba(11,11,11,.25);color:rgba(11,11,11,.7)}
+.tile.lime .tmark{position:absolute;top:20px;left:22px;height:30px}
+.tile.cta-tile{background:transparent;align-items:flex-start;justify-content:center;gap:18px}
+
+/* metodo: striscia unica compressa */
+.mstrip{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--hair)}
+.mstep{border-right:1px solid var(--hair);padding:clamp(24px,3vw,44px);position:relative}
+.mstep:last-child{border-right:none}
+.mstep .n{font-family:'Encode Sans';font-weight:800;font-size:clamp(40px,4.5vw,72px);color:var(--lime);line-height:1}
+.mstep h3{font-family:'Encode Sans';font-weight:700;text-transform:uppercase;font-size:clamp(17px,1.6vw,24px);margin:14px 0 8px}
+.mstep p{color:var(--mute);font-size:13.5px;max-width:30ch}
+
+/* work: poster panels più grandi e densi */
+.hwork.pinned .hpanel{width:min(66vw,940px)}
+.him.cover{aspect-ratio:16/9.5}
+.him.cover .bgpat{position:absolute;inset:auto 0 0 0;display:flex;gap:20px;justify-content:center;padding:14px 0;border-top:1px solid rgba(255,255,255,.12)}
+.him.cover .bgpat img{height:16px;opacity:.5}
+.him.cover.lime .bgpat{border-top-color:rgba(11,11,11,.2)}
+.him.cover .cvw{font-size:clamp(38px,4.8vw,74px)}
+.him.cover .yr{position:absolute;right:18px;top:14px;font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.him.cover.lime .yr{color:rgba(11,11,11,.6)}
+
+/* stats poster su lime */
+.stats-lime{background:var(--lime);color:#0b0b0b;padding:clamp(56px,8vh,90px) 0;border:none}
+.stats-lime .stats{border-top:1px solid rgba(11,11,11,.2);grid-template-columns:repeat(4,1fr)}
+.stats-lime .stat .num i{color:#0b0b0b}
+.stats-lime .stat p{color:rgba(11,11,11,.6)}
+
+@media(max-width:900px){
+  .tiles{grid-template-columns:1fr}
+  .mstrip{grid-template-columns:1fr}
+  .mstep{border-right:none;border-bottom:1px solid var(--hair)}
+  .mstep:last-child{border-bottom:none}
+  .lime-band{min-height:0}
+  .lime-band .bigC{width:220px;right:-60px;opacity:.15}
+  .gridlines{display:none}
+  .hero .corner{display:none}
+  .stats-lime .stats{grid-template-columns:1fr 1fr}
+}

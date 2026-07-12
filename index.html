@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@500;600;700;800&family=Kanit:wght@300;400;500&family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="assets/img/mark-lime.svg">
-<link rel="stylesheet" href="assets/css/main.css?v=202607121939">
+<link rel="stylesheet" href="assets/css/main.css?v=202607122003">
 <style>
 .loader{position:fixed;inset:0;background:var(--ink-deep);z-index:3000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px}
 .loader .lg{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:300;overflow:hidden}
@@ -23,6 +23,7 @@
 </style>
 </head>
 <body>
+<div class="gridlines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 
 <div class="loader" id="loader">
   <div class="lg"><span id="loaderLogo"><span class="mark" style="display:block"><img src="assets/img/mark-lime.svg" alt="Connexa"></span></span></div>
@@ -58,6 +59,9 @@
 
 <!-- HERO -->
 <header class="hero">
+  <span class="corner c-tl">Creative Studio<br>Est. 2024</span>
+  <span class="corner c-tr">40°48'N 14°37'E<br>Sarno — Italia</span>
+  <span class="corner c-bl">Brand <b>●</b> Web <b>●</b> Contenuti</span>
   <div class="hero-mark"><img src="assets/img/mark-lime.svg" alt=""></div>
   <div class="rotor" style="right:clamp(20px,6vw,90px);top:16vh">
     <svg viewBox="0 0 100 100"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
@@ -77,10 +81,8 @@
       <a href="contatti.html" class="btn btn-lime magnetic"><span class="lbl">Prenota una call</span> <span class="arr">↗</span></a>
       <a href="progetti.html" class="btn btn-ghost magnetic"><span class="lbl">Guarda i progetti</span></a>
     </div>
-    <div class="hero-meta" id="heroMeta">
-      <span>Creative studio indipendente</span>
-      <span>Brand <b>·</b> Web <b>·</b> Contenuti <b>·</b> Campagne</span>
-      <span><b>restiamo connessi</b></span>
+    <div class="hero-strip" id="heroMeta">
+      <div class="cpattern" aria-hidden="true"><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""></div>
     </div>
   </div>
   <div class="side-label">Creative Studio — Sarno, Italia</div>
@@ -118,74 +120,62 @@
 
 <!-- LIME MANIFESTO BAND -->
 <section class="lime-band">
+  <div class="bigC" aria-hidden="true"><img src="assets/img/mark-lime.svg" alt=""></div>
   <div class="wrap">
     <span class="eyebrow" style="margin-bottom:36px">Il manifesto</span>
     <p class="manifesto">Dietro ogni brand c'è <em>una visione.</em> Noi la trasformiamo in un'identità <span class="lm">coerente, autentica e memorabile.</span></p>
-    <div class="cpattern" aria-hidden="true">
-      <img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt="">
-    </div>
+    <span class="stamp">© 2026 — Connexa Studios · Restiamo connessi</span>
   </div>
 </section>
 
-<!-- SERVICES (summary) -->
-<section class="sec" style="padding-top:0">
+<!-- SERVICES: poster tiles -->
+<section class="sec" style="padding-top:clamp(64px,9vh,120px)">
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow rv">Cosa facciamo</span>
       <h2 class="split">Un unico sistema. <em>Tre leve.</em></h2>
     </div>
-    <div class="svc-row rv">
-      <span class="ghostn">01</span>
-      <span class="svc-num">01</span>
-      <h3 class="svc-name">Brand Identity<em>logo · palette · guidelines</em></h3>
-      <p class="svc-desc"><b>Diamo un volto al tuo brand.</b> Loghi, palette e linee guida per un'identità solida e scalabile.</p>
-      <div class="svc-tags"><span>Logo e varianti</span><span>Palette e tipografia</span><span>Brand book &amp; guidelines</span></div>
-    </div>
-    <div class="svc-row rv">
-      <span class="ghostn">02</span>
-      <span class="svc-num">02</span>
-      <h3 class="svc-name">Comunicazione &amp; Strategia<em>tono · messaggi · posizionamento</em></h3>
-      <p class="svc-desc"><b>Più di un logo, una visione.</b> Tono di voce, messaggi chiave e strategie per connettere brand e persone.</p>
-      <div class="svc-tags"><span>Strategia comunicativa</span><span>Tono di voce &amp; storytelling</span><span>Campagne e posizionamento</span></div>
-    </div>
-    <div class="svc-row rv">
-      <span class="ghostn">03</span>
-      <span class="svc-num">03</span>
-      <h3 class="svc-name">Digital &amp; Social Media<em>contenuti · editoriale · adv</em></h3>
-      <p class="svc-desc"><b>Gestiamo la tua presenza online.</b> Contenuti, piani editoriali e ADV che generano risultati.</p>
-      <div class="svc-tags"><span>Gestione social</span><span>Content design &amp; copywriting</span><span>ADV &amp; analisi performance</span></div>
-    </div>
-    <div style="display:flex;justify-content:center;padding:clamp(40px,6vh,72px) 0 0" class="rv">
-      <a href="servizi.html" class="btn btn-ghost magnetic"><span class="lbl">Tutti i servizi</span> <span class="arr">↗</span></a>
+    <div class="tiles">
+      <div class="tile rv">
+        <span class="tn">01</span>
+        <h3>Brand Identity</h3>
+        <p>Diamo un volto al tuo brand. Loghi, palette e linee guida per un'identità solida e scalabile.</p>
+        <div class="ttags"><span>Logo e varianti</span><span>Palette e tipografia</span><span>Brand book</span></div>
+      </div>
+      <div class="tile rv">
+        <span class="tn">02</span>
+        <h3>Comunicazione &amp; Strategia</h3>
+        <p>Più di un logo, una visione. Tono di voce, messaggi chiave e strategie per connettere brand e persone.</p>
+        <div class="ttags"><span>Strategia</span><span>Tono di voce</span><span>Posizionamento</span></div>
+      </div>
+      <div class="tile rv">
+        <span class="tn">03</span>
+        <h3>Digital &amp; Social Media</h3>
+        <p>Gestiamo la tua presenza online. Contenuti, piani editoriali e ADV che generano risultati.</p>
+        <div class="ttags"><span>Gestione social</span><span>Content design</span><span>ADV &amp; analisi</span></div>
+      </div>
+      <a class="tile lime rv" href="servizi.html">
+        <img class="tmark" src="assets/img/mark-black.svg" alt="" style="filter:none">
+        <span class="tn">→</span>
+        <h3>Tutto il sistema</h3>
+        <p>Deliverable, KPI reali e processo completo: guarda cosa consegniamo davvero.</p>
+        <div class="ttags"><span>Servizi completi</span><span>Esempi reali</span></div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- METHOD -->
-<section class="sec" style="background:var(--ink-deep);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+<section class="sec">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="sec-head" style="margin-bottom:clamp(28px,4vh,44px)">
       <span class="eyebrow rv">Metodo</span>
       <h2 class="split">Tre fasi. <em>Zero confusione.</em></h2>
     </div>
-    <div class="mth-steps">
-      <div class="mth-step">
-        <div class="n">01</div>
-        <h3>Scopriamo</h3>
-        <p>Brand, mercato, pubblico. Valori, tono e posizionamento per una direzione netta.</p>
-      </div>
-      <div class="mth-step">
-        <div class="n">02</div>
-        <h3>Creiamo</h3>
-        <p>Identità visiva completa: logo, palette, tipografia, linee guida e componenti.</p>
-      </div>
-      <div class="mth-step">
-        <div class="n">03</div>
-        <h3>Lanciamo</h3>
-        <p>Asset, design digitale e strategia di lancio con KPI chiari e misurabili.</p>
-      </div>
+    <div class="mstrip rv">
+      <div class="mstep"><span class="n">01</span><h3>Scopriamo</h3><p>Brand, mercato, pubblico. Valori, tono e posizionamento per una direzione netta.</p></div>
+      <div class="mstep"><span class="n">02</span><h3>Creiamo</h3><p>Identità visiva completa: logo, palette, tipografia, linee guida e componenti.</p></div>
+      <div class="mstep"><span class="n">03</span><h3>Lanciamo</h3><p>Asset, design digitale e strategia di lancio con KPI chiari e misurabili.</p></div>
     </div>
-    <div class="mth-progress"><i></i></div>
   </div>
 </section>
 
@@ -200,25 +190,25 @@
     <a class="hpanel" href="lettereallarossa.html">
       <span class="hnum">01</span>
       <span class="harr">↗</span>
-      <div class="him cover"><span class="tagl">Community &amp; Editorial</span><span class="cvw">Lettere<br>alla Rossa</span><img class="cmk" src="assets/img/mark-lime.svg" alt=""></div>
+      <div class="him cover"><span class="yr">2024</span><div class="bgpat"><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""></div><span class="tagl">Community &amp; Editorial</span><span class="cvw">Lettere<br>alla Rossa</span><img class="cmk" src="assets/img/mark-lime.svg" alt=""></div>
       <div class="hinfo"><h3>Lettere alla Rossa</h3><span>Brand Identity · 2024</span></div>
     </a>
     <a class="hpanel" href="3mfdesign.html">
       <span class="hnum">02</span>
       <span class="harr">↗</span>
-      <div class="him cover lime"><span class="tagl">Manufacturing</span><span class="cvw">3MF<br>Design</span><img class="cmk" src="assets/img/mark-lime.svg" alt=""></div>
+      <div class="him cover lime"><span class="yr">2024</span><div class="bgpat"><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""></div><span class="tagl">Manufacturing</span><span class="cvw">3MF<br>Design</span><img class="cmk" src="assets/img/mark-lime.svg" alt=""></div>
       <div class="hinfo"><h3>3MF Design</h3><span>Rebranding · 2024</span></div>
     </a>
     <a class="hpanel" href="fatter.html">
       <span class="hnum">03</span>
       <span class="harr">↗</span>
-      <div class="him cover"><span class="tagl">Food &amp; Local</span><span class="cvw">Fatter</span><img class="cmk" src="assets/img/mark-lime.svg" alt=""></div>
+      <div class="him cover"><span class="yr">2025</span><div class="bgpat"><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""></div><span class="tagl">Food &amp; Local</span><span class="cvw">Fatter</span><img class="cmk" src="assets/img/mark-lime.svg" alt=""></div>
       <div class="hinfo"><h3>Fatter</h3><span>Social Media Management · 2025</span></div>
     </a>
     <a class="hpanel" href="telosf1.html">
       <span class="hnum">04</span>
       <span class="harr">↗</span>
-      <div class="him cover lime"><span class="tagl">SaaS &amp; Data</span><span class="cvw">Telos F1</span><img class="cmk" src="assets/img/mark-lime.svg" alt=""></div>
+      <div class="him cover lime"><span class="yr">2025</span><div class="bgpat"><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""><img src="assets/img/mark-lime.svg" alt=""></div><span class="tagl">SaaS &amp; Data</span><span class="cvw">Telos F1</span><img class="cmk" src="assets/img/mark-lime.svg" alt=""></div>
       <div class="hinfo"><h3>Telos F1</h3><span>Product Design &amp; Dev · 2025</span></div>
     </a>
     <div class="hpanel hend">
@@ -228,8 +218,8 @@
   <div class="hwork-progress"><i></i></div>
 </section>
 
-<!-- STATS -->
-<section class="sec" style="padding-top:0">
+<!-- STATS + CTA: poster lime -->
+<section class="stats-lime">
   <div class="wrap">
     <div class="stats">
       <div class="stat rv"><div class="num"><span class="count" data-to="12">0</span></div><p>Progetti interni</p></div>
@@ -291,7 +281,7 @@
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script src="assets/js/main.js?v=202607121939"></script>
+<script src="assets/js/main.js?v=202607122003"></script>
 <script>
 
 /* ===== Preloader + hero intro ===== */
