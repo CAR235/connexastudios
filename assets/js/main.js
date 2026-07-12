@@ -399,6 +399,19 @@ setInterval(() => {
   });
 }, 1500);
 
+/* ---------- Stacked cards: la carta sotto si schiaccia mentre arriva la successiva ---------- */
+const scards = gsap.utils.toArray('.scard');
+if (scards.length && !reduced) {
+  scards.forEach((card, i) => {
+    if (i === scards.length - 1) return;
+    const next = scards[i + 1];
+    gsap.to(card, {
+      scale: .92, filter: 'brightness(.55)', transformOrigin: 'center top', ease: 'none',
+      scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top', scrub: true }
+    });
+  });
+}
+
 /* ---------- Run page-in ---------- */
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 pageIn();

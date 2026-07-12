@@ -792,3 +792,28 @@ section,header,footer{position:relative;z-index:1}
   .sec{padding:clamp(64px,9vh,100px) 0}
   .rv{transform:translateY(40px)}
 }
+
+/* ===================== STACKED SERVICE CARDS ===================== */
+.stack{position:relative}
+.scard{position:sticky;top:86px;min-height:calc(100vh - 120px);display:flex;flex-direction:column;justify-content:space-between;padding:clamp(28px,4vw,64px);margin-bottom:24px;background:var(--ink-deep);border:1px solid var(--hair);overflow:hidden;will-change:transform,filter}
+.scard.lime{background:var(--lime);color:#0b0b0b;border:none}
+.scard .sc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.scard .sc-num{font-family:'Encode Sans';font-weight:800;font-size:clamp(15px,1.4vw,20px);letter-spacing:.2em;color:var(--lime)}
+.scard.lime .sc-num{color:#0b0b0b}
+.scard .sc-label{font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--mute);font-weight:600}
+.scard.lime .sc-label{color:rgba(11,11,11,.55)}
+.scard h3{font-family:'Encode Sans';font-weight:800;text-transform:uppercase;letter-spacing:-.02em;font-size:clamp(34px,6.5vw,104px);line-height:.95;margin:auto 0}
+.scard .sc-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.scard .sc-desc{color:var(--mute);font-size:clamp(14px,1.2vw,17px);max-width:46ch}
+.scard.lime .sc-desc{color:rgba(11,11,11,.68)}
+.scard .ttags{display:flex;gap:8px;flex-wrap:wrap}
+.scard .ttags span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--hair);padding:6px 12px;color:var(--mute)}
+.scard.lime .ttags span{border-color:rgba(11,11,11,.3);color:rgba(11,11,11,.7)}
+.scard .sc-mark{position:absolute;right:-6vw;bottom:-8vh;width:clamp(220px,26vw,420px);opacity:.08;pointer-events:none}
+.scard.lime .sc-mark{opacity:.999}
+.scard.lime .sc-mark img{filter:brightness(0);opacity:.1}
+.scard .sc-mark img{width:100%}
+@media(max-width:900px){
+  .scard{top:70px;min-height:calc(100dvh - 110px);padding:24px 20px}
+  .scard h3{font-size:clamp(30px,10vw,54px)}
+}
