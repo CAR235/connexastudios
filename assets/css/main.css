@@ -560,3 +560,22 @@ h1,h2,h3,h4,.btn,.eyebrow,.nav-links a{font-family:'Encode Sans',sans-serif}
 
 /* eyebrow chip */
 .eyebrow{font-weight:700}
+
+/* ===================== SCROLL SOUL RESTORE ===================== */
+.wordmark .wm.limef{color:var(--lime);margin-left:8vw}
+.wordmark .wm.ghost{display:none}
+
+/* pinned horizontal gallery (desktop) */
+.hwork.pinned{padding:0}
+.hwork.pinned .hwork-track{overflow:visible;height:100vh;align-items:center;padding:0 0 0 6vw;cursor:default}
+.hwork.pinned .hwork-head{position:absolute;top:clamp(36px,6vh,72px);left:0;right:0;z-index:5;margin:0}
+.hwork.pinned .hwork-progress{display:block}
+
+/* vertical side label on hero */
+.side-label{position:absolute;left:clamp(8px,1.6vw,24px);bottom:14vh;writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--mute);z-index:1}
+@media(max-width:1100px){.side-label{display:none}}
+
+/* manifesto words tighter for scrub */
+.lime-band .manifesto .w{opacity:.18}
+/* rotor behind wordmark, layered not colliding */
+.rotor{z-index:0;opacity:.55}

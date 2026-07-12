@@ -262,14 +262,31 @@ document.querySelectorAll('.manifesto').forEach(el => {
   walk(el);
   const words = el.querySelectorAll('.w');
   gsap.to(words, {
-    opacity: 1, stagger: .045, duration: .5, ease: 'power2.out',
-    scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+    opacity: 1, stagger: .05, ease: 'none',
+    scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 55%', scrub: .4 }
   });
 });
 
-/* ---------- Work gallery: native horizontal scroll + drag ---------- */
+/* ---------- Work gallery: pinned horizontal on desktop ---------- */
+const hwork2 = document.querySelector('.hwork');
+if (hwork2 && !isMobile && !reduced) {
+  hwork2.classList.add('pinned');
+  const track2 = hwork2.querySelector('.hwork-track');
+  const bar2 = hwork2.querySelector('.hwork-progress i');
+  const dist2 = () => Math.max(track2.scrollWidth - innerWidth, 0);
+  gsap.to(track2, {
+    x: () => -dist2(), ease: 'none',
+    scrollTrigger: {
+      trigger: hwork2, start: 'top top', end: () => '+=' + dist2(),
+      pin: true, scrub: .7, invalidateOnRefresh: true, anticipatePin: 1,
+      onUpdate: self => { if (bar2) bar2.style.transform = 'scaleX(' + self.progress + ')'; }
+    }
+  });
+}
+
+/* ---------- Work gallery: native horizontal scroll + drag (mobile) ---------- */
 const htrack = document.querySelector('.hwork-track');
-if (htrack && hasHover) {
+if (htrack && hasHover && isMobile) {
   let down = false, sx = 0, sl = 0;
   htrack.addEventListener('pointerdown', e => { down = true; sx = e.clientX; sl = htrack.scrollLeft; htrack.setPointerCapture(e.pointerId); });
   htrack.addEventListener('pointermove', e => { if (down) htrack.scrollLeft = sl - (e.clientX - sx); });
@@ -317,6 +334,24 @@ if (hasHover && !reduced) {
       }, 34);
     });
   });
+}
+
+/* ---------- Hero wordmark: split & sink on scroll ---------- */
+const wmk = document.querySelector('.wordmark');
+if (wmk && !reduced) {
+  const l1 = wmk.querySelector('.wm.solid'), l2 = wmk.querySelector('.wm.limef') || wmk.querySelector('.wm.ghost');
+  const st = { trigger: '.hero', start: 'top top', end: 'bottom 30%', scrub: .5 };
+  if (l1) gsap.to(l1, { xPercent: -12, opacity: .25, ease: 'none', scrollTrigger: st });
+  if (l2) gsap.to(l2, { xPercent: 10, opacity: .35, ease: 'none', scrollTrigger: st });
+}
+
+/* ---------- Lime band pattern: marches with scroll ---------- */
+const cpat = document.querySelector('.cpattern');
+if (cpat && !reduced) {
+  gsap.fromTo(cpat, { x: 60 }, { x: -60, ease: 'none',
+    scrollTrigger: { trigger: cpat, start: 'top bottom', end: 'bottom top', scrub: .4 } });
+  gsap.from(cpat.querySelectorAll('img'), { yPercent: 60, opacity: 0, stagger: .05, duration: .7, ease: 'power3.out',
+    scrollTrigger: { trigger: cpat, start: 'top 90%' } });
 }
 
 /* ---------- Section heading parallax ---------- */
