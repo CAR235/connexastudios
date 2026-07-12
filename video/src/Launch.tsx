@@ -1,6 +1,6 @@
 import {
-  AbsoluteFill, Img, Sequence, interpolate, spring,
-  staticFile, useCurrentFrame, useVideoConfig,
+  AbsoluteFill, Img, OffthreadVideo, Sequence, interpolate, spring,
+  staticFile, useCurrentFrame, useVideoConfig, Easing,
 } from "remotion";
 import { loadFont as loadEncode } from "@remotion/google-fonts/EncodeSans";
 import { loadFont as loadKanit } from "@remotion/google-fonts/Kanit";
@@ -10,180 +10,212 @@ const { fontFamily: KANIT } = loadKanit("normal", { weights: ["300", "400"] });
 
 const LIME = "#c8f504";
 const INK = "#0b0b0b";
+// molla "Apple": nessun overshoot, decelerazione lunga e morbida
+const APPLE = { damping: 200, mass: 1, stiffness: 80 };
 
-const Grid = ({ dark = true }: { dark?: boolean }) => (
-  <AbsoluteFill style={{ flexDirection: "row", justifyContent: "space-between", padding: "0 60px" }}>
-    {[0, 1, 2, 3].map((i) => (
-      <div key={i} style={{ width: 1, background: dark ? "rgba(255,255,255,.06)" : "rgba(11,11,11,.08)" }} />
-    ))}
-  </AbsoluteFill>
-);
+/* testo che entra da sfocato, sale e si assesta — il gesto Apple */
+const BlurIn = ({ children, delay = 0, style = {} }: any) => {
+  const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const s = spring({ frame: f - delay, fps, config: APPLE });
+  return (
+    <div style={{
+      opacity: s,
+      transform: `translateY(${(1 - s) * 60}px) scale(${0.96 + s * 0.04})`,
+      filter: `blur(${(1 - s) * 18}px)`,
+      ...style,
+    }}>{children}</div>
+  );
+};
 
-/* S1 — intro: C esplode, pattern, label */
+/* S1 — solo la C, respiro, label. Minimale. */
 const Intro = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const pop = spring({ frame: f, fps, config: { damping: 11, mass: .7 } });
+  const s = spring({ frame: f, fps, config: APPLE });
+  const breathe = 1 + Math.sin(f / 22) * 0.012;
   return (
-    <AbsoluteFill style={{ background: INK }}>
-      <Grid />
+    <AbsoluteFill style={{ background: INK, justifyContent: "center", alignItems: "center" }}>
       <Img src={staticFile("mark-lime.svg")} style={{
-        position: "absolute", left: "50%", top: "42%", width: 300,
-        transform: `translate(-50%,-50%) scale(${pop}) rotate(${(1 - pop) * -90}deg)`,
+        width: 280, opacity: s,
+        transform: `scale(${(0.7 + s * 0.3) * breathe})`,
+        filter: `blur(${(1 - s) * 24}px)`,
       }} />
-      <div style={{ position: "absolute", left: 0, right: 0, top: "60%", display: "flex", gap: 60, justifyContent: "center" }}>
-        {[0, 1, 2, 3, 4].map((i) => {
-          const s = spring({ frame: f - 12 - i * 3, fps, config: { damping: 14 } });
-          return <Img key={i} src={staticFile("mark-lime.svg")} style={{ height: 70, opacity: s, transform: `translateY(${(1 - s) * 80}px)` }} />;
-        })}
-      </div>
-      <div style={{
-        position: "absolute", left: 0, right: 0, top: "70%", textAlign: "center",
-        fontFamily: KANIT, fontSize: 24, letterSpacing: "0.34em", color: LIME, textTransform: "uppercase",
-        opacity: interpolate(f, [30, 45], [0, 1], { extrapolateRight: "clamp" }),
-      }}>Connexa Studios — 2026</div>
+      <BlurIn delay={18} style={{ position: "absolute", bottom: 220, left: 0, right: 0, textAlign: "center" }}>
+        <span style={{ fontFamily: KANIT, fontSize: 24, letterSpacing: "0.4em", color: "rgba(255,255,255,.55)", textTransform: "uppercase" }}>
+          Connexa Studios
+        </span>
+      </BlurIn>
     </AbsoluteFill>
   );
 };
 
-/* S2 — statement */
+/* S2 — statement, riga per riga da sfocato */
 const Statement = () => {
   const f = useCurrentFrame();
-  const { fps } = useVideoConfig();
-  const inY = spring({ frame: f, fps, config: { damping: 15 } });
+  const drift = 1 + f * 0.0005; // lenta avanzata della camera
   return (
-    <AbsoluteFill style={{ background: INK, justifyContent: "center", padding: "0 80px" }}>
-      <Grid />
-      <div style={{
-        fontFamily: ENCODE, fontWeight: 800, fontSize: 132, lineHeight: 0.95,
-        color: "#fff", textTransform: "uppercase", letterSpacing: "-3px",
-        transform: `translateY(${(1 - inY) * 120}px) scale(${1 + f * 0.0006})`,
-        opacity: inY,
-      }}>
-        Il nuovo sito<br />è <span style={{ color: LIME }}>vivo.</span>
-      </div>
+    <AbsoluteFill style={{ background: INK, justifyContent: "center", padding: "0 90px", transform: `scale(${drift})` }}>
+      <BlurIn>
+        <div style={{ fontFamily: ENCODE, fontWeight: 800, fontSize: 128, lineHeight: 0.98, color: "#fff", textTransform: "uppercase", letterSpacing: "-3px" }}>
+          Il nuovo sito
+        </div>
+      </BlurIn>
+      <BlurIn delay={10}>
+        <div style={{ fontFamily: ENCODE, fontWeight: 800, fontSize: 128, lineHeight: 0.98, textTransform: "uppercase", letterSpacing: "-3px", color: LIME }}>
+          è vivo.
+        </div>
+      </BlurIn>
+      <BlurIn delay={24} style={{ marginTop: 46 }}>
+        <span style={{ fontFamily: KANIT, fontSize: 26, letterSpacing: ".3em", color: "rgba(255,255,255,.5)", textTransform: "uppercase" }}>
+          connexastudios.com
+        </span>
+      </BlurIn>
     </AbsoluteFill>
   );
 };
 
-/* S3 — il sito scorre nella cornice */
+/* S3 — il SITO VERO che scorre, dentro una cornice device che si avvicina */
 const SiteScroll = () => {
   const f = useCurrentFrame();
-  const reveal = interpolate(f, [0, 22], [100, 0], { extrapolateRight: "clamp" });
-  const pan = interpolate(f, [20, 160], [0, -7600], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const { fps, durationInFrames } = useVideoConfig();
+  const enter = spring({ frame: f, fps, config: APPLE });
+  // la camera si avvicina lentamente al device (Apple dolly-in)
+  const zoom = interpolate(f, [0, 260], [0.9, 1.06], { easing: Easing.bezier(.25, .1, .25, 1), extrapolateRight: "clamp" });
   return (
-    <AbsoluteFill style={{ background: INK }}>
-      <Grid />
-      <div style={{ position: "absolute", left: 60, right: 60, top: 130, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span style={{ fontFamily: KANIT, fontSize: 22, letterSpacing: ".34em", color: "#888", textTransform: "uppercase" }}>Nuovo sito</span>
-        <span style={{ fontFamily: KANIT, fontSize: 26, letterSpacing: ".2em", color: LIME }}>CONNEXASTUDIOS.COM</span>
-      </div>
+    <AbsoluteFill style={{ background: INK, justifyContent: "center", alignItems: "center" }}>
+      <BlurIn style={{ position: "absolute", top: 130, left: 0, right: 0, textAlign: "center" }}>
+        <span style={{ fontFamily: KANIT, fontSize: 24, letterSpacing: ".34em", color: "rgba(255,255,255,.5)", textTransform: "uppercase" }}>
+          Il sito — dal vivo
+        </span>
+      </BlurIn>
       <div style={{
-        position: "absolute", left: 60, right: 60, top: 210, bottom: 330,
-        border: "1px solid rgba(255,255,255,.18)", overflow: "hidden", background: "#000",
-        clipPath: `inset(${reveal}% 0 0 0)`,
+        width: 820, height: 1460, borderRadius: 44, overflow: "hidden",
+        border: "1px solid rgba(255,255,255,.22)",
+        boxShadow: "0 60px 160px rgba(0,0,0,.6)",
+        opacity: enter,
+        transform: `scale(${zoom * (0.94 + enter * 0.06)}) translateY(${(1 - enter) * 90}px)`,
+        filter: `blur(${(1 - enter) * 16}px)`,
       }}>
-        <Img src={staticFile("site-full.png")} style={{ width: "100%", transform: `translateY(${pan}px)` }} />
+        <OffthreadVideo src={staticFile("site-scroll.mp4")} muted style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </div>
-      <div style={{
-        position: "absolute", left: 0, right: 0, bottom: 210, textAlign: "center",
-        fontFamily: ENCODE, fontWeight: 800, fontSize: 62, color: "#fff", textTransform: "uppercase", letterSpacing: "-1px",
-        opacity: interpolate(f, [30, 50], [0, 1], { extrapolateRight: "clamp" }),
-      }}>Diamo forma alla visione</div>
     </AbsoluteFill>
   );
 };
 
-/* S4 — cover a raffica su lime */
+/* S4 — cover con parallasse: la cover sale lenta, il contatore più veloce */
 const COVERS = ["lar-ig.jpg", "3mf-ig.jpg", "fatter-ig.jpg", "telos-ig.jpg"];
 const Covers = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const per = 33; // frame per cover
+  const per = 42;
   const idx = Math.min(Math.floor(f / per), 3);
   const local = f - idx * per;
-  const s = spring({ frame: local, fps, config: { damping: 14 } });
+  const s = spring({ frame: local, fps, config: APPLE });
+  const out = interpolate(local, [per - 8, per], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const kenburns = 1 + local * 0.0012;
   return (
-    <AbsoluteFill style={{ background: LIME }}>
-      <Grid dark={false} />
-      <div style={{ position: "absolute", left: 0, right: 0, top: 110, textAlign: "center", fontFamily: KANIT, fontSize: 24, letterSpacing: ".34em", color: "rgba(11,11,11,.6)", textTransform: "uppercase" }}>
-        Progetti selezionati
+    <AbsoluteFill style={{ background: INK }}>
+      <BlurIn style={{ position: "absolute", top: 130, left: 0, right: 0, textAlign: "center" }}>
+        <span style={{ fontFamily: KANIT, fontSize: 24, letterSpacing: ".34em", color: "rgba(255,255,255,.5)", textTransform: "uppercase" }}>
+          Progetti selezionati
+        </span>
+      </BlurIn>
+      <div style={{
+        position: "absolute", left: 90, right: 90, top: "50%",
+        opacity: Math.min(s, idx === 3 ? 1 : out),
+        transform: `translateY(-50%) translateY(${(1 - s) * 80}px) scale(${kenburns})`,
+        filter: `blur(${(1 - s) * 14}px)`,
+        boxShadow: "0 50px 140px rgba(0,0,0,.55)",
+      }}>
+        <Img src={staticFile(COVERS[idx])} style={{ width: "100%", display: "block", borderRadius: 8 }} />
       </div>
       <div style={{
-        position: "absolute", left: 70, right: 70, top: "50%",
-        transform: `translateY(-50%) translateY(${(1 - s) * 60}px) scale(${0.92 + s * 0.08})`,
-        opacity: s, boxShadow: "0 40px 120px rgba(11,11,11,.45)",
+        position: "absolute", right: 90, bottom: 150,
+        fontFamily: ENCODE, fontWeight: 800, fontSize: 96, color: LIME,
+        opacity: s, transform: `translateY(${(1 - s) * 140}px)`, // parallasse: corre più del resto
       }}>
-        <Img src={staticFile(COVERS[idx])} style={{ width: "100%", display: "block" }} />
-      </div>
-      <div style={{ position: "absolute", right: 80, bottom: 110, fontFamily: ENCODE, fontWeight: 800, fontSize: 120, color: INK }}>
-        {String(idx + 1).padStart(2, "0")}
+        {String(idx + 1).padStart(2, "0")}<span style={{ color: "rgba(255,255,255,.3)" }}> / 04</span>
       </div>
     </AbsoluteFill>
   );
 };
 
-/* S5 — claim parola per parola */
-const WORDS = "Il mercato non premia il migliore. Premia chi".split(" ");
+/* S5 — claim, parole che si accendono con blur */
+const LINE1 = "Il mercato non premia".split(" ");
+const LINE2 = "il migliore.".split(" ");
 const Claim = () => {
   const f = useCurrentFrame();
+  const { fps } = useVideoConfig();
+  const word = (i: number, txt: string, lime = false) => {
+    const s = spring({ frame: f - i * 5, fps, config: APPLE });
+    return (
+      <span key={txt + i} style={{
+        display: "inline-block", marginRight: "0.28em",
+        opacity: s, transform: `translateY(${(1 - s) * 40}px)`, filter: `blur(${(1 - s) * 12}px)`,
+        color: lime ? LIME : "#fff",
+      }}>{txt}</span>
+    );
+  };
+  let i = 0;
   return (
-    <AbsoluteFill style={{ background: INK, justifyContent: "center", padding: "0 80px" }}>
-      <Grid />
-      <div style={{ fontFamily: ENCODE, fontWeight: 800, fontSize: 108, lineHeight: 1.02, color: "#fff", textTransform: "uppercase", letterSpacing: "-2px" }}>
-        {WORDS.map((w, i) => (
-          <span key={i} style={{ opacity: interpolate(f, [i * 4, i * 4 + 10], [0.14, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) }}>{w} </span>
-        ))}
-        <span style={{
-          background: LIME, color: INK, padding: "0 .14em",
-          opacity: interpolate(f, [WORDS.length * 4, WORDS.length * 4 + 10], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }),
-        }}>sembra</span>
-        <span style={{ opacity: interpolate(f, [WORDS.length * 4 + 8, WORDS.length * 4 + 18], [0.14, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }) }}> il migliore.</span>
+    <AbsoluteFill style={{ background: INK, justifyContent: "center", padding: "0 90px" }}>
+      <div style={{ fontFamily: ENCODE, fontWeight: 800, fontSize: 106, lineHeight: 1.04, textTransform: "uppercase", letterSpacing: "-2px" }}>
+        <div>{LINE1.map((w) => word(i++, w))}</div>
+        <div>{LINE2.map((w) => word(i++, w))}</div>
+        <div style={{ marginTop: 30 }}>
+          {word(i++, "Premia")} {word(i++, "chi")} {word(i++, "sembra", true)}
+        </div>
+        <div>{word(i++, "il")} {word(i++, "migliore.")}</div>
       </div>
     </AbsoluteFill>
   );
 };
 
-/* S6 — outro lime */
+/* S6 — outro: lime pieno, logo, chiusura quieta */
 const Outro = () => {
   const f = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const lg = spring({ frame: f, fps, config: { damping: 11, mass: .7 } });
-  const t1 = spring({ frame: f - 10, fps, config: { damping: 14 } });
+  const wipe = spring({ frame: f, fps, config: APPLE });
   return (
-    <AbsoluteFill style={{ background: LIME, justifyContent: "center", alignItems: "center", gap: 44 }}>
-      <Grid dark={false} />
-      <Img src={staticFile("logo-black.svg")} style={{ width: 640, transform: `scale(${0.6 + lg * 0.4})`, opacity: lg }} />
-      <div style={{ fontFamily: ENCODE, fontWeight: 800, fontSize: 84, color: INK, textTransform: "uppercase", letterSpacing: "-2px", opacity: t1, transform: `translateY(${(1 - t1) * 60}px)` }}>
-        Restiamo connessi
-      </div>
-      <div style={{ fontFamily: KANIT, fontSize: 30, letterSpacing: ".3em", color: "rgba(11,11,11,.65)", textTransform: "uppercase", opacity: interpolate(f, [22, 38], [0, 1], { extrapolateRight: "clamp" }) }}>
-        connexastudios.com
-      </div>
-      <div style={{ position: "absolute", bottom: 110, display: "flex", gap: 54 }}>
-        {[0, 1, 2, 3, 4].map((i) => {
-          const s = spring({ frame: f - 20 - i * 3, fps, config: { damping: 14 } });
-          return <Img key={i} src={staticFile("mark-black.svg")} style={{ height: 60, opacity: s * 0.85, transform: `translateY(${(1 - s) * 60}px)` }} />;
-        })}
-      </div>
+    <AbsoluteFill style={{ background: INK }}>
+      <AbsoluteFill style={{
+        background: LIME, justifyContent: "center", alignItems: "center", gap: 48,
+        clipPath: `circle(${wipe * 120}% at 50% 50%)`,
+      }}>
+        <BlurIn delay={6}>
+          <Img src={staticFile("logo-black.svg")} style={{ width: 620 }} />
+        </BlurIn>
+        <BlurIn delay={16}>
+          <div style={{ fontFamily: ENCODE, fontWeight: 800, fontSize: 78, color: INK, textTransform: "uppercase", letterSpacing: "-2px" }}>
+            Restiamo connessi
+          </div>
+        </BlurIn>
+        <BlurIn delay={26}>
+          <div style={{ fontFamily: KANIT, fontSize: 28, letterSpacing: ".32em", color: "rgba(11,11,11,.6)", textTransform: "uppercase" }}>
+            connexastudios.com
+          </div>
+        </BlurIn>
+      </AbsoluteFill>
     </AbsoluteFill>
   );
 };
 
-/* dissolvenza tra scene */
-const Fade = ({ children, len }: { children: React.ReactNode; len: number }) => {
+/* dissolvenza + micro-zoom tra le scene (cross-dissolve alla Apple) */
+const Scene = ({ children, len }: { children: React.ReactNode; len: number }) => {
   const f = useCurrentFrame();
-  const o = interpolate(f, [0, 8, len - 8, len], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  return <AbsoluteFill style={{ opacity: o }}>{children}</AbsoluteFill>;
+  const o = interpolate(f, [0, 10, len - 10, len], [0, 1, 1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  const z = interpolate(f, [len - 12, len], [1, 1.03], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+  return <AbsoluteFill style={{ opacity: o, transform: `scale(${z})` }}>{children}</AbsoluteFill>;
 };
 
 export const Launch = () => (
   <AbsoluteFill style={{ background: INK }}>
-    <Sequence from={0} durationInFrames={96}><Fade len={96}><Intro /></Fade></Sequence>
-    <Sequence from={96} durationInFrames={84}><Fade len={84}><Statement /></Fade></Sequence>
-    <Sequence from={180} durationInFrames={180}><Fade len={180}><SiteScroll /></Fade></Sequence>
-    <Sequence from={360} durationInFrames={140}><Fade len={140}><Covers /></Fade></Sequence>
-    <Sequence from={500} durationInFrames={115}><Fade len={115}><Claim /></Fade></Sequence>
-    <Sequence from={615} durationInFrames={135}><Fade len={135}><Outro /></Fade></Sequence>
+    <Sequence from={0} durationInFrames={85}><Scene len={85}><Intro /></Scene></Sequence>
+    <Sequence from={85} durationInFrames={95}><Scene len={95}><Statement /></Scene></Sequence>
+    <Sequence from={180} durationInFrames={270}><Scene len={270}><SiteScroll /></Scene></Sequence>
+    <Sequence from={450} durationInFrames={170}><Scene len={170}><Covers /></Scene></Sequence>
+    <Sequence from={620} durationInFrames={115}><Scene len={115}><Claim /></Scene></Sequence>
+    <Sequence from={735} durationInFrames={135}><Scene len={135}><Outro /></Scene></Sequence>
   </AbsoluteFill>
 );
