@@ -645,3 +645,7 @@ h1,h2,h3,h4,.btn,.eyebrow,.nav-links a{font-family:'Encode Sans',sans-serif}
 }
 /* e su nero l'enfasi resta lime pieno, senza sottolineature dello stesso colore dello sfondo */
 .sec-head h2 em,.page-hero h1 em,.svc-name em{background:none;box-shadow:none}
+
+/* wordmark SVG proprietario in nav/footer */
+.logo .lww{height:15px;width:auto;display:block}
+.ft-brand .logo .lww{height:20px}
