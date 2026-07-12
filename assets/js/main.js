@@ -8,7 +8,9 @@ document.documentElement.classList.remove('no-js');
 /* ---------- Lenis smooth scroll ---------- */
 let lenis = null;
 if (!reduced && typeof Lenis !== 'undefined') {
-  lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), syncTouch: true, touchMultiplier: 1.3 });
+  lenis = new Lenis(isMobile
+    ? { syncTouch: true, syncTouchLerp: .08, touchMultiplier: 1.2 }
+    : { duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add(t => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
@@ -243,9 +245,11 @@ document.querySelectorAll('.field input, .field textarea').forEach(inp => {
 });
 
 /* ---------- Film grain ---------- */
-if (!reduced) {
+{
   const g = document.createElement('div');
   g.className = 'grain';
+  g.style.animation = 'none';
+  g.style.inset = '0';
   document.body.appendChild(g);
 }
 
@@ -404,10 +408,13 @@ if (scards.length && !reduced) {
   scards.forEach((card, i) => {
     if (i === scards.length - 1) return;
     const next = scards[i + 1];
-    gsap.to(card, {
-      scale: .92, filter: 'brightness(.55)', transformOrigin: 'center top', ease: 'none',
-      scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top', scrub: true }
-    });
+    const shade = document.createElement('div');
+    shade.style.cssText = 'position:absolute;inset:0;background:#000;opacity:0;pointer-events:none;z-index:5';
+    card.appendChild(shade);
+    gsap.to(card, { scale: .92, transformOrigin: 'center top', ease: 'none',
+      scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top', scrub: true } });
+    gsap.to(shade, { opacity: .5, ease: 'none',
+      scrollTrigger: { trigger: next, start: 'top bottom', end: 'top top', scrub: true } });
   });
 }
 

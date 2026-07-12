@@ -826,3 +826,10 @@ section,header,footer{position:relative;z-index:1}
   .hwork.pinned::after{display:none}
   .hwork.pinned .hwork-progress{display:block;left:5vw;right:5vw}
 }
+
+/* ===================== PERF PASS (zero cambi visivi) ===================== */
+.grain{animation:none;inset:0}
+.scard{will-change:transform;transform:translateZ(0)}
+.hwork-track{will-change:transform}
+.wordmark .wm{will-change:transform}
+.marquee-track{transform:translateZ(0)}
