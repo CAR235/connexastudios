@@ -633,3 +633,15 @@ h1,h2,h3,h4,.btn,.eyebrow,.nav-links a{font-family:'Encode Sans',sans-serif}
 .csub{font-weight:600}
 /* enfasi = lime, sempre e solo lime */
 .page-hero h1 em,.sec-head h2 em{color:var(--lime)}
+
+/* ===================== FIX: enfasi su sfondi lime ===================== */
+/* su lime, l'enfasi è un chip nero con testo lime (mai lime su lime) */
+.cta-band h2 strong,.cta-band h2 em,
+.lime-band .manifesto .lm,.lime-band .manifesto em,
+.punchline strong,.diag .row strong{
+  background:#0b0b0b!important;color:var(--lime)!important;
+  box-shadow:none!important;-webkit-text-stroke:0;
+  padding:.02em .14em;box-decoration-break:clone;-webkit-box-decoration-break:clone
+}
+/* e su nero l'enfasi resta lime pieno, senza sottolineature dello stesso colore dello sfondo */
+.sec-head h2 em,.page-hero h1 em,.svc-name em{background:none;box-shadow:none}
