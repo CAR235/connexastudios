@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="it" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexa Studios — Diamo forma alla visione del tuo brand</title>
+<meta name="description" content="Connexa Studios è il punto di incontro tra creatività e strategia. Costruiamo brand, trasformiamo visioni in realtà e diamo un'identità unica al tuo business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<style>
+.loader{position:fixed;inset:0;background:var(--ink-deep);z-index:3000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px}
+.loader .lg{font-family:var(--serif);font-size:clamp(28px,4vw,44px);font-weight:300;overflow:hidden}
+.loader .lg span{display:inline-block;transform:translateY(110%)}
+.loader .bar{width:min(280px,60vw);height:1px;background:var(--hair);position:relative;overflow:hidden}
+.loader .bar i{position:absolute;inset:0;background:var(--lime);transform:scaleX(0);transform-origin:left}
+.loader .pct{font-size:11px;letter-spacing:.3em;color:var(--mute)}
+.pos-claim{font-family:var(--serif);font-size:clamp(22px,2.4vw,34px);font-weight:300;line-height:1.35;max-width:34ch}
+.pos-claim strong{font-weight:400;background:linear-gradient(var(--lime),var(--lime)) left bottom/0% 45% no-repeat;transition:background-size 1s var(--ease)}
+.pos-claim.lit strong{background-size:100% 45%}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="lg"><span id="loaderLogo">Connexa Studios<sup style="color:var(--lime);font-size:.4em">®</sup></span></div>
+  <div class="bar"><i id="loaderBar"></i></div>
+  <div class="pct" id="loaderPct">0%</div>
+</div>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo">Connexa<sup>®</sup></a>
+    <div class="nav-links">
+      <a href="chi-siamo.html">Chi siamo</a>
+      <a href="servizi.html">Servizi</a>
+      <a href="progetti.html">Progetti</a>
+      <a href="store.html">Store</a>
+      <a href="contatti.html" class="nav-cta magnetic">Parliamone</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="chi-siamo.html">Chi siamo<em>01</em></a>
+  <a href="servizi.html">Servizi<em>02</em></a>
+  <a href="progetti.html">Progetti<em>03</em></a>
+  <a href="store.html">Store<em>04</em></a>
+  <a href="contatti.html">Contatti<em>05</em></a>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="wrap">
+    <div class="hero-grid">
+      <h1 id="heroH1">
+        <span class="ln"><span>Diamo forma<span class="hpill"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=600,h=280,fit=crop/mePbKxLq4rF2Wkel/asset-5-72x-IC55tjHSlm8kRWkR.png" alt=""></span>alla</span></span>
+        <span class="ln"><span><em class="mark">visione</em> del tuo brand.</span></span>
+      </h1>
+      <div class="hero-sub" id="heroSub">
+        <p>Connexa Studios è il punto di incontro tra creatività e strategia. Costruiamo brand, trasformiamo visioni in realtà e diamo un'identità unica al tuo business.</p>
+      </div>
+      <div class="hero-actions" id="heroActions">
+        <a href="contatti.html" class="btn btn-lime magnetic"><span class="lbl">Prenota una call</span> <span class="arr">↗</span></a>
+        <a href="progetti.html" class="btn btn-ghost magnetic"><span class="lbl">Guarda i progetti</span></a>
+      </div>
+    </div>
+    <div class="hero-meta" id="heroMeta">
+      <span>Creative studio indipendente</span>
+      <span>Brand <b>·</b> Web <b>·</b> Contenuti <b>·</b> Campagne</span>
+      <span>Sarno, Italia — <b>restiamo connessi</b></span>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Brand identity <i>●</i></span><span>Naming <i>●</i></span><span>Visual identity <i>●</i></span><span>Web design <i>●</i></span><span>Strategia social <i>●</i></span><span>Contenuti visivi <i>●</i></span><span>Campagne <i>●</i></span><span>Product design <i>●</i></span>
+  </div>
+</div>
+
+<!-- POSITIONING -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Lo studio</span>
+      <h2 class="split">Creatività, strategia e <em>identità che restano.</em></h2>
+      <p class="sub rv">Diamo vita a brand con una direzione chiara. Dal concept alla comunicazione, uniamo design e strategia per creare esperienze coerenti, riconoscibili e memorabili.</p>
+    </div>
+    <div class="pos-cols" style="margin-bottom:clamp(64px,9vh,110px)">
+      <div class="rv">
+        <h3 style="color:var(--mute)">Identità debole</h3>
+        <p>Un logo scollegato dal sito. Un sito scollegato dai social. Ogni pezzo comunica da solo, con un tono diverso. Il risultato: il brand sembra improvvisato, anche quando non lo è.</p>
+      </div>
+      <div class="rv">
+        <h3>Sistema forte <span style="color:var(--lime)">●</span></h3>
+        <p>Un'identità coerente su ogni superficie. Stessa voce, stessa disciplina visiva, stessa ambizione. Il brand appare serio, strutturato, desiderabile — prima ancora di parlare.</p>
+      </div>
+    </div>
+    <p class="manifesto">Dietro ogni brand c'è <em>una visione.</em> Noi la trasformiamo in un'identità <span class="lm">coerente, autentica e memorabile</span> — perché viva nella mente e nel cuore delle persone.</p>
+  </div>
+</section>
+
+<!-- SERVICES (summary) -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Cosa facciamo</span>
+      <h2 class="split">Un unico sistema. <em>Tre leve.</em></h2>
+    </div>
+    <div class="svc-row rv">
+      <span class="svc-num">01</span>
+      <h3 class="svc-name">Brand Identity<em>logo · palette · guidelines</em></h3>
+      <p class="svc-desc"><b>Diamo un volto al tuo brand.</b> Loghi, palette e linee guida per un'identità solida e scalabile.</p>
+      <div class="svc-tags"><span>Logo e varianti</span><span>Palette e tipografia</span><span>Brand book &amp; guidelines</span></div>
+    </div>
+    <div class="svc-row rv">
+      <span class="svc-num">02</span>
+      <h3 class="svc-name">Comunicazione &amp; Strategia<em>tono · messaggi · posizionamento</em></h3>
+      <p class="svc-desc"><b>Più di un logo, una visione.</b> Tono di voce, messaggi chiave e strategie per connettere brand e persone.</p>
+      <div class="svc-tags"><span>Strategia comunicativa</span><span>Tono di voce &amp; storytelling</span><span>Campagne e posizionamento</span></div>
+    </div>
+    <div class="svc-row rv">
+      <span class="svc-num">03</span>
+      <h3 class="svc-name">Digital &amp; Social Media<em>contenuti · editoriale · adv</em></h3>
+      <p class="svc-desc"><b>Gestiamo la tua presenza online.</b> Contenuti, piani editoriali e ADV che generano risultati.</p>
+      <div class="svc-tags"><span>Gestione social</span><span>Content design &amp; copywriting</span><span>ADV &amp; analisi performance</span></div>
+    </div>
+    <div style="display:flex;justify-content:center;padding:clamp(40px,6vh,72px) 0 0" class="rv">
+      <a href="servizi.html" class="btn btn-ghost magnetic"><span class="lbl">Tutti i servizi</span> <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="sec" style="background:var(--ink-deep);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow rv">Metodo</span>
+      <h2 class="split">Tre fasi. <em>Zero confusione.</em></h2>
+    </div>
+    <div class="mth-steps">
+      <div class="mth-step">
+        <div class="n">01</div>
+        <h3>Scopriamo</h3>
+        <p>Brand, mercato, pubblico. Valori, tono e posizionamento per una direzione netta.</p>
+      </div>
+      <div class="mth-step">
+        <div class="n">02</div>
+        <h3>Creiamo</h3>
+        <p>Identità visiva completa: logo, palette, tipografia, linee guida e componenti.</p>
+      </div>
+      <div class="mth-step">
+        <div class="n">03</div>
+        <h3>Lanciamo</h3>
+        <p>Asset, design digitale e strategia di lancio con KPI chiari e misurabili.</p>
+      </div>
+    </div>
+    <div class="mth-progress"><i></i></div>
+  </div>
+</section>
+
+<!-- SELECTED WORK: pinned horizontal gallery -->
+<section class="hwork">
+  <div class="hwork-head">
+    <div class="wrap">
+      <span class="eyebrow">Progetti selezionati</span>
+    </div>
+  </div>
+  <div class="hwork-track">
+    <a class="hpanel" href="lettereallarossa.html">
+      <span class="hnum">01</span>
+      <span class="harr">↗</span>
+      <div class="him"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,h=756,fit=crop/mePbKxLq4rF2Wkel/asset-5-72x-IC55tjHSlm8kRWkR.png" alt="Lettere alla Rossa"></div>
+      <div class="hinfo"><h3>Lettere alla Rossa</h3><span>Brand Identity · 2024</span></div>
+    </a>
+    <a class="hpanel" href="3mfdesign.html">
+      <span class="hnum">02</span>
+      <span class="harr">↗</span>
+      <div class="him"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,h=756,fit=crop/mePbKxLq4rF2Wkel/insegna2-mePJb9jw3Xt96527.jpg" alt="3MF Design"></div>
+      <div class="hinfo"><h3>3MF Design</h3><span>Rebranding · 2024</span></div>
+    </a>
+    <a class="hpanel" href="fatter.html">
+      <span class="hnum">03</span>
+      <span class="harr">↗</span>
+      <div class="him"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,h=774,fit=crop/mePbKxLq4rF2Wkel/screenshot-2025-12-04-at-12-33-12-instagram-djexfMmSzqIi2YBW.png" alt="Fatter"></div>
+      <div class="hinfo"><h3>Fatter</h3><span>Social Media Management · 2025</span></div>
+    </a>
+    <a class="hpanel" href="telosf1.html">
+      <span class="hnum">04</span>
+      <span class="harr">↗</span>
+      <div class="him"><img src="https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=1440,fit=crop/mePbKxLq4rF2Wkel/risorsa-4-mk3qpyy9l1UN5N3Q.png" alt="Telos F1"></div>
+      <div class="hinfo"><h3>Telos F1</h3><span>Product Design &amp; Dev · 2025</span></div>
+    </a>
+    <div class="hpanel hend">
+      <a href="progetti.html" class="btn btn-ghost magnetic"><span class="lbl">Tutti i progetti</span> <span class="arr">↗</span></a>
+    </div>
+  </div>
+  <div class="hwork-progress"><i></i></div>
+</section>
+
+<!-- STATS -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat rv"><div class="num"><span class="count" data-to="12">0</span></div><p>Progetti interni</p></div>
+      <div class="stat rv"><div class="num"><span class="count" data-to="3">0</span></div><p>Divisioni: Studio, Lab, Store</p></div>
+      <div class="stat rv"><div class="num"><span class="count" data-to="100">0</span><i>+</i></div><p>Asset di brand creati</p></div>
+      <div class="stat rv"><div class="num"><span class="count" data-to="5">0</span></div><p>Progetti in corso</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="cta-band">
+  <div class="wrap">
+    <span class="eyebrow rv" style="margin-bottom:44px">Restiamo connessi</span>
+    <h2 class="rv">Se il tuo brand sembra più piccolo di quello che vale, <strong>il problema non è solo estetico.</strong></h2>
+    <div class="row rv">
+      <p>Ogni grande brand inizia da una conversazione. Raccontaci il tuo progetto: ti rispondiamo il prima possibile.</p>
+      <a href="contatti.html" class="btn btn-lime magnetic"><span class="lbl">Parliamone</span> <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="ft-big" href="contatti.html" style="display:block">RESTIAMO CONNESSI</a>
+    <div class="ft-grid">
+      <div class="ft-brand">
+        <a href="index.html" class="logo">Connexa<sup>®</sup></a>
+        <div class="ft-clock" id="ftClock"></div>
+      </div>
+      <div class="ft-col">
+        <h5>Studio</h5>
+        <a href="chi-siamo.html">Chi siamo</a>
+        <a href="servizi.html">Servizi</a>
+        <a href="progetti.html">Progetti</a>
+        <a href="store.html">Store</a>
+      </div>
+      <div class="ft-col">
+        <h5>Contatti</h5>
+        <a href="mailto:info@connexastudios.com">info@connexastudios.com</a>
+        <a href="mailto:assistenza@connexastudios.com">assistenza@connexastudios.com</a>
+      </div>
+      <div class="ft-col">
+        <h5>Social</h5>
+        <a href="https://www.instagram.com/connexastudios" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@connexastudios" target="_blank" rel="noopener">TikTok</a>
+        <a href="https://www.linkedin.com/company/connexastudios" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://x.com/connexastudios" target="_blank" rel="noopener">X</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <span>© 2026 Connexa Studios®. All rights reserved</span>
+      <span>Diamo forma alla visione del tuo brand.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+/* ===== Interactive hero canvas: living dot field ===== */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cv=document.getElementById('heroCanvas'),ctx=cv.getContext('2d');
+  let W,H,pts=[],mx=-9999,my=-9999,t=0;
+  const GAP=42;
+  function build(){
+    W=cv.width=cv.offsetWidth*devicePixelRatio;H=cv.height=cv.offsetHeight*devicePixelRatio;
+    cv.style.width=cv.offsetWidth+'px';
+    pts=[];
+    const g=GAP*devicePixelRatio;
+    for(let x=g/2;x<W;x+=g)for(let y=g/2;y<H;y+=g)pts.push({x,y,ox:x,oy:y,v:Math.random()*Math.PI*2});
+  }
+  build();addEventListener('resize',build);
+  const hero=document.querySelector('.hero');
+  hero.addEventListener('mousemove',e=>{const r=cv.getBoundingClientRect();mx=(e.clientX-r.left)*devicePixelRatio;my=(e.clientY-r.top)*devicePixelRatio});
+  hero.addEventListener('mouseleave',()=>{mx=my=-9999});
+  const R=170*devicePixelRatio;
+  function frame(){
+    t+=.008;
+    ctx.clearRect(0,0,W,H);
+    for(const p of pts){
+      // gentle breathing drift
+      const bx=Math.sin(t+p.v)*2*devicePixelRatio, by=Math.cos(t*1.3+p.v)*2*devicePixelRatio;
+      const dx=p.ox+bx-mx,dy=p.oy+by-my,d=Math.hypot(dx,dy);
+      let px=p.ox+bx,py=p.oy+by,near=0;
+      if(d<R){
+        const f=(1-d/R);near=f;
+        px+=dx/d*f*34*devicePixelRatio;
+        py+=dy/d*f*34*devicePixelRatio;
+      }
+      p.x+= (px-p.x)*.09; p.y+=(py-p.y)*.09;
+      const a=.10+near*.75;
+      ctx.fillStyle=near>.45?'rgba(200,245,4,'+a+')':'rgba(255,255,255,'+a*.6+')';
+      const s=(near>.45?2.2:1.4)*devicePixelRatio;
+      ctx.fillRect(p.x-s/2,p.y-s/2,s,s);
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+/* ===== Preloader + hero intro ===== */
+(function(){
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const loader=document.getElementById('loader');
+  function heroIn(){
+    const tl=gsap.timeline({defaults:{ease:'power4.out'}});
+    tl.to('#heroH1 .ln>span',{y:0,yPercent:0,duration:1.2,stagger:.12})
+      .add(()=>document.querySelectorAll('#heroH1 .mark').forEach(m=>m.classList.add('drawn')),'-=.5')
+      .to('#heroSub',{opacity:1,y:0,duration:1},'-=.7')
+      .to('#heroActions',{opacity:1,y:0,duration:1},'-=.8')
+      .to('#heroMeta',{opacity:1,duration:1.2},'-=.6');
+  }
+  if(reduced){loader.remove();return}
+  gsap.set('#heroH1 .ln>span',{yPercent:115});
+  gsap.set('#loaderLogo',{y:'110%'});
+  const pct=document.getElementById('loaderPct');
+  const tl=gsap.timeline();
+  tl.to('#loaderLogo',{y:0,duration:.9,ease:'power4.out'},0)
+    .to({v:0},{v:100,duration:1.1,ease:'power2.inOut',onUpdate(){pct.textContent=Math.round(this.targets()[0].v)+'%'}},0)
+    .to('#loaderBar',{scaleX:1,duration:1.1,ease:'power2.inOut'},0)
+    .to(loader,{yPercent:-100,duration:.9,ease:'power4.inOut',delay:.15})
+    .add(heroIn,'-=.45')
+    .set(loader,{display:'none'});
+})();
+</script>
+</body>
+</html>
