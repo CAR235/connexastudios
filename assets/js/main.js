@@ -338,11 +338,12 @@ if (hasHover && !reduced) {
 
 /* ---------- Hero wordmark: split & sink on scroll ---------- */
 const wmk = document.querySelector('.wordmark');
-if (wmk && !reduced && !isMobile) {
+if (wmk && !reduced) {
   const l1 = wmk.querySelector('.wm.solid'), l2 = wmk.querySelector('.wm.limef') || wmk.querySelector('.wm.ghost');
+  const amp = isMobile ? 5 : 12;
   const st = { trigger: '.hero', start: 'top top', end: 'bottom 30%', scrub: .5 };
-  if (l1) gsap.to(l1, { xPercent: -12, opacity: .25, ease: 'none', scrollTrigger: st });
-  if (l2) gsap.to(l2, { xPercent: 10, opacity: .35, ease: 'none', scrollTrigger: st });
+  if (l1) gsap.to(l1, { xPercent: -amp, opacity: .25, ease: 'none', scrollTrigger: st });
+  if (l2) gsap.to(l2, { xPercent: amp * .8, opacity: .35, ease: 'none', scrollTrigger: st });
 }
 
 /* ---------- Lime band pattern: marches with scroll ---------- */
@@ -355,7 +356,7 @@ if (cpat && !reduced) {
 }
 
 /* ---------- Section heading parallax ---------- */
-if (!reduced && !isMobile) {
+if (!reduced) {
   document.querySelectorAll('.ghostn').forEach(g => {
     gsap.fromTo(g, { yPercent: -35 }, { yPercent: -65, ease: 'none',
       scrollTrigger: { trigger: g.closest('.svc-row'), start: 'top bottom', end: 'bottom top', scrub: .6 } });
