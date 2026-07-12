@@ -418,6 +418,28 @@ if (scards.length && !reduced) {
   });
 }
 
+/* ---------- FAQ accordion ---------- */
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-q'), a = item.querySelector('.faq-a');
+  q.addEventListener('click', () => {
+    const open = item.classList.toggle('open');
+    a.style.maxHeight = open ? a.scrollHeight + 'px' : 0;
+    document.querySelectorAll('.faq-item.open').forEach(o => {
+      if (o !== item) { o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = 0; }
+    });
+  });
+});
+
+/* ---------- Back to top ---------- */
+(() => {
+  const b = document.createElement('button');
+  b.className = 'totop'; b.innerHTML = '↑'; b.setAttribute('aria-label', 'Torna su');
+  b.classList.add('magnetic');
+  document.body.appendChild(b);
+  window.addEventListener('scroll', () => b.classList.toggle('on', scrollY > innerHeight * 1.5), { passive: true });
+  b.addEventListener('click', () => lenis ? lenis.scrollTo(0) : scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+
 /* ---------- Run page-in ---------- */
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 pageIn();

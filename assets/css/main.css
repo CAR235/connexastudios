@@ -833,3 +833,20 @@ section,header,footer{position:relative;z-index:1}
 .hwork-track{will-change:transform}
 .wordmark .wm{will-change:transform}
 .marquee-track{transform:translateZ(0)}
+
+/* ===================== EXTRA PACK ===================== */
+/* FAQ accordion */
+.faq{border-top:1px solid var(--hair)}
+.faq-item{border-bottom:1px solid var(--hair)}
+.faq-q{width:100%;background:none;border:none;color:var(--white);font-family:'Encode Sans';font-weight:700;text-transform:uppercase;font-size:clamp(16px,1.6vw,22px);text-align:left;padding:26px 0;display:flex;justify-content:space-between;align-items:center;gap:20px;cursor:pointer;letter-spacing:.01em}
+.faq-q .fx{color:var(--lime);font-size:24px;transition:transform .5s var(--ease);flex-shrink:0}
+.faq-item.open .faq-q .fx{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .6s var(--ease)}
+.faq-a p{color:var(--mute);font-size:15px;max-width:62ch;padding:0 0 26px}
+/* back to top */
+.totop{position:fixed;right:clamp(16px,3vw,40px);bottom:clamp(16px,3vw,40px);z-index:90;width:52px;height:52px;border-radius:50%;background:var(--lime);color:#0b0b0b;border:none;font-size:20px;cursor:pointer;opacity:0;transform:translateY(20px);transition:opacity .4s var(--ease),transform .4s var(--ease);display:flex;align-items:center;justify-content:center}
+.totop.on{opacity:1;transform:none}
+/* newsletter */
+.nl-form{display:flex;gap:0;border:1px solid var(--hair);max-width:440px}
+.nl-form input{flex:1;background:none;border:none;outline:none;color:var(--white);font-family:var(--sans);font-size:15px;padding:14px 18px}
+.nl-form button{background:var(--lime);color:#0b0b0b;border:none;font-family:'Encode Sans';font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:.1em;padding:14px 22px;cursor:pointer}
