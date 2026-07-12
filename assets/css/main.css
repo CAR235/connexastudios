@@ -894,3 +894,5 @@ a,button,input,textarea{touch-action:manipulation}
 .founder .fimg{position:relative}
 /* lock definitivo: mai corsivo sul sottotitolo caso */
 .case-hero .csub{font-style:normal;font-family:'Encode Sans';font-weight:600;color:var(--lime)}
+/* transizione a cerchio: logo sopra tutto */
+.curtain .c-logo{z-index:2003}
