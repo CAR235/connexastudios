@@ -626,3 +626,10 @@ h1,h2,h3,h4,.btn,.eyebrow,.nav-links a{font-family:'Encode Sans',sans-serif}
 
 /* store products squared to line */
 .product{border-radius:0}
+
+/* ===================== LINEA CREATIVA — LOCK ===================== */
+/* niente finti corsivi: Encode Sans non ha italic, il lime È l'enfasi */
+.page-hero h1 em,.sec-head h2 em,.cta-band h2 em,.manifesto em,.csub,.cquote,.svc-name em,.mobile-menu a em,.wk-head h2 em,.team-grid h2 em{font-style:normal}
+.csub{font-weight:600}
+/* enfasi = lime, sempre e solo lime */
+.page-hero h1 em,.sec-head h2 em{color:var(--lime)}
