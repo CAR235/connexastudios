@@ -474,6 +474,13 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 })();
 
+/* ---------- Report bars: riempimento allo scroll ---------- */
+document.querySelectorAll('[data-report]').forEach(rep => {
+  ScrollTrigger.create({ trigger: rep, start: 'top 75%', once: true, onEnter() {
+    rep.querySelectorAll('.rbar').forEach((b, i) => setTimeout(() => b.classList.add('on'), 200 + i * 220));
+  }});
+});
+
 /* ---------- Run page-in ---------- */
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 pageIn();
