@@ -481,6 +481,27 @@ document.querySelectorAll('[data-report]').forEach(rep => {
   }});
 });
 
+/* ---------- Cookie consent (GDPR / Garante) ---------- */
+(function(){
+  const KEY='cx-consent';
+  function loadClarity(){
+    if(window.__clarityLoaded)return; window.__clarityLoaded=1;
+    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","qb8j9a9cid");
+  }
+  const saved=localStorage.getItem(KEY);
+  if(saved==='accept'){ loadClarity(); return; }
+  if(saved==='reject'){ return; }
+  // mostra banner
+  const cc=document.createElement('div');
+  cc.className='cc'; cc.setAttribute('role','dialog'); cc.setAttribute('aria-label','Consenso cookie');
+  cc.innerHTML='<div class="cc-inner"><h4><img src="assets/img/mark-lime.svg" alt="">Cookie &amp; Privacy</h4><p>Usiamo cookie tecnici necessari al funzionamento del sito e, solo con il tuo consenso, cookie analitici (Microsoft Clarity) per capire come viene usato il sito in forma aggregata. Leggi la <a href="/cookie-policy">Cookie Policy</a> e la <a href="/privacy-policy">Privacy Policy</a>.</p><div class="cc-btns"><button class="cc-acc">Accetta</button><button class="cc-rej">Rifiuta</button></div></div>';
+  document.body.appendChild(cc);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>cc.classList.add('on')));
+  const close=v=>{ localStorage.setItem(KEY,v); cc.classList.remove('on'); setTimeout(()=>cc.remove(),600); if(v==='accept')loadClarity(); };
+  cc.querySelector('.cc-acc').addEventListener('click',()=>close('accept'));
+  cc.querySelector('.cc-rej').addEventListener('click',()=>close('reject'));
+})();
+
 /* ---------- Run page-in ---------- */
 window.addEventListener('load', () => { ScrollTrigger.refresh(); });
 pageIn();
