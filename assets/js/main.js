@@ -15,6 +15,7 @@ if (!reduced && typeof Lenis !== 'undefined') {
   gsap.ticker.add(t => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
 }
+window.__lenis = lenis;
 
 /* ---------- Page transition curtain ---------- */
 const curtain = document.createElement('div');
@@ -48,6 +49,7 @@ document.addEventListener('click', e => {
   e.preventDefault();
   pageOut(href);
 });
+window.__pageOut = pageOut;
 window.addEventListener('pageshow', e => { if (e.persisted) gsap.set([c1, c2], { scaleY: 0 }); });
 
 /* ---------- Custom cursor ---------- */
@@ -480,6 +482,12 @@ document.querySelectorAll('[data-report]').forEach(rep => {
     rep.querySelectorAll('.rbar').forEach((b, i) => setTimeout(() => b.classList.add('on'), 200 + i * 220));
   }});
 });
+
+/* ---------- hero-mark tilt allo scroll ---------- */
+(function(){
+  const hm=document.querySelector('.hero-mark');
+  if(hm && !reduced){ gsap.to(hm,{rotate:18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:.6}}); }
+})();
 
 /* ---------- Cookie consent (GDPR / Garante) ---------- */
 (function(){
