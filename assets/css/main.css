@@ -998,3 +998,65 @@ a,button,input,textarea{touch-action:manipulation}
 /* 13. clock dot pulse */
 .ft-clock b::before{content:"●";color:var(--lime);margin-right:6px;font-size:.7em;animation:clockpulse 2s var(--ease) infinite}
 @keyframes clockpulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ===================== WOW PACK 2 (altre 20) ===================== */
+/* 1. contrast-aware nav su sezioni lime */
+nav.invert .logo img,nav.invert .lfull{filter:brightness(0)}
+nav.invert .nav-links a{color:rgba(11,11,11,.7)}
+nav.invert .nav-links a:hover,nav.invert .nav-links a.active{color:#0b0b0b}
+nav.invert .nav-links a::after{background:#0b0b0b}
+nav.invert .kbd-hint{color:rgba(11,11,11,.6);border-color:rgba(11,11,11,.25)}
+nav.invert .nav-cta{background:#0b0b0b;color:var(--lime)!important}
+nav.invert .burger span{background:#0b0b0b}
+nav.invert.scrolled{background:rgba(200,245,4,.9)!important}
+/* 2. sound toggle */
+.snd{background:none;border:1px solid var(--hair);color:var(--mute);width:34px;height:34px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);flex-shrink:0}
+.snd:hover{border-color:var(--lime);color:var(--lime)}
+.snd.on{background:var(--lime);color:#0b0b0b;border-color:var(--lime)}
+nav.invert .snd{border-color:rgba(11,11,11,.25);color:rgba(11,11,11,.6)}
+/* 5. idle screensaver */
+.saver{position:fixed;inset:0;z-index:2400;background:var(--ink-deep);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .8s var(--ease)}
+.saver.on{opacity:1;pointer-events:auto;cursor:pointer}
+.saver img{width:120px;animation:saverfloat 5s var(--ease) infinite}
+.saver .st{position:absolute;bottom:14vh;font-family:'Kanit';font-size:14px;letter-spacing:.34em;text-transform:uppercase;color:var(--mute)}
+@keyframes saverfloat{0%,100%{transform:translateY(-16px) rotate(-4deg)}50%{transform:translateY(16px) rotate(4deg)}}
+/* 6. custom scrollbar */
+*{scrollbar-width:thin;scrollbar-color:var(--lime) transparent}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#0b0b0b}
+::-webkit-scrollbar-thumb{background:var(--lime);border:3px solid #0b0b0b;border-radius:10px}
+/* 7. reading time chip */
+.readt{display:inline-flex;align-items:center;gap:8px;font-family:'Kanit';font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-top:18px}
+.readt b{color:var(--lime);font-weight:400}
+/* 8. select-to-share */
+.selshare{position:fixed;z-index:2600;background:#0b0b0b;border:1px solid var(--lime);color:var(--lime);font-family:'Encode Sans';font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 16px;border-radius:999px;cursor:pointer;opacity:0;transform:translateY(6px);transition:opacity .25s,transform .25s;pointer-events:none}
+.selshare.on{opacity:1;transform:none;pointer-events:auto}
+/* 11. section indicator */
+.secind{position:fixed;left:clamp(14px,2vw,28px);top:50%;transform:translateY(-50%);z-index:80;font-family:'Encode Sans';font-weight:800;font-size:13px;letter-spacing:.1em;color:var(--mute);writing-mode:vertical-rl;opacity:0;transition:opacity .5s var(--ease)}
+.secind.on{opacity:1}
+.secind b{color:var(--lime)}
+@media(max-width:1100px){.secind{display:none}}
+/* 12. rgb glitch on cover hover */
+.cgcard:hover img,.hpanel:hover .him img{animation:rgbsplit .4s steps(2) 1}
+@keyframes rgbsplit{0%{filter:none}30%{filter:drop-shadow(3px 0 0 rgba(255,0,80,.6)) drop-shadow(-3px 0 0 rgba(200,245,4,.6))}100%{filter:none}}
+/* 14. grid overlay (design mode) */
+.gridmode{position:fixed;inset:0;z-index:2300;pointer-events:none;display:none}
+.gridmode.on{display:block}
+.gridmode .wrap{height:100%;display:flex;justify-content:space-between}
+.gridmode i{width:1px;background:rgba(200,245,4,.25)}
+.gridmode .gm-lbl{position:fixed;top:90px;left:50%;transform:translateX(-50%);font-family:'Encode Sans';font-weight:700;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--lime);background:#0b0b0b;padding:6px 14px;border:1px solid var(--lime)}
+/* 18. cursor label per sezione (usa .cursor.view già esistente) */
+.cursor.drag{width:84px;height:84px;mix-blend-mode:normal;background:var(--lime)}
+.cursor.drag .cur-lbl{opacity:1}
+/* 19. selection glow */
+::selection{background:var(--lime);color:#0b0b0b;text-shadow:0 0 12px rgba(200,245,4,.5)}
+/* 20. shortcuts panel */
+.shpanel{position:fixed;inset:0;z-index:2550;background:rgba(11,11,11,.8);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+.shpanel.on{opacity:1;pointer-events:auto}
+.shpanel-box{width:min(520px,92vw);background:var(--ink-deep);border:1px solid var(--hair);padding:clamp(28px,4vw,44px)}
+.shpanel h3{font-family:'Encode Sans';font-weight:800;text-transform:uppercase;font-size:20px;letter-spacing:-.01em;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.shpanel h3 img{height:22px}
+.shrow{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--hair);font-size:14px;color:rgba(255,255,255,.8)}
+.shrow:last-child{border:none}
+.shrow .keys{display:flex;gap:6px}
+.shrow kbd{font-family:'Encode Sans';font-size:11px;letter-spacing:.06em;color:var(--lime);border:1px solid var(--hair);padding:4px 9px;border-radius:5px;background:#0b0b0b}
