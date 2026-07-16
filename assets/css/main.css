@@ -998,3 +998,6 @@ a,button,input,textarea{touch-action:manipulation}
 /* 13. clock dot pulse */
 .ft-clock b::before{content:"●";color:var(--lime);margin-right:6px;font-size:.7em;animation:clockpulse 2s var(--ease) infinite}
 @keyframes clockpulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* ===================== ONDA TIPOGRAFICA HERO ===================== */
+.wordmark .vl{display:inline-block;font-variation-settings:'wght' 800;transition:font-variation-settings .35s cubic-bezier(.32,.72,0,1),transform .4s cubic-bezier(.32,.72,0,1);will-change:font-variation-settings,transform}

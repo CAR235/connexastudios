@@ -178,3 +178,55 @@
     cnav.parentNode.insertBefore(share, cnav);
   }
 })();
+
+/* Connexa Studios — Onda tipografica: il wordmark reagisce al cursore (font variabile) */
+(function () {
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasHover = matchMedia('(hover:hover)').matches;
+  if (!hasHover || reduced) return;
+  const hero = document.querySelector('.hero');
+  const wms = document.querySelectorAll('.wordmark .wm');
+  if (!hero || !wms.length) return;
+
+  wms.forEach(w => {
+    if (w.dataset.split) return; w.dataset.split = '1';
+    [...w.childNodes].forEach(n => {
+      if (n.nodeType !== 3) return;
+      const frag = document.createDocumentFragment();
+      for (const ch of n.textContent) {
+        if (ch === ' ') { frag.appendChild(document.createTextNode(' ')); continue; }
+        const sp = document.createElement('span');
+        sp.className = 'vl'; sp.textContent = ch;
+        frag.appendChild(sp);
+      }
+      w.replaceChild(frag, n);
+    });
+  });
+
+  const letters = [...document.querySelectorAll('.wordmark .vl')];
+  let mx = -9999, my = -9999, raf = null;
+  const R = 240;
+  function paint() {
+    raf = null;
+    for (const l of letters) {
+      const r = l.getBoundingClientRect();
+      const d = Math.hypot(r.left + r.width / 2 - mx, r.top + r.height / 2 - my);
+      const t = Math.max(0, 1 - d / R);
+      if (t > 0.01) {
+        l.style.fontVariationSettings = "'wght' " + Math.round(800 - t * 500);
+        l.style.transform = 'translateY(' + (-t * 12).toFixed(1) + 'px)';
+      } else if (l.style.fontVariationSettings) {
+        l.style.fontVariationSettings = "'wght' 800";
+        l.style.transform = '';
+      }
+    }
+  }
+  hero.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    if (!raf) raf = requestAnimationFrame(paint);
+  });
+  hero.addEventListener('mouseleave', () => {
+    mx = my = -9999;
+    if (!raf) raf = requestAnimationFrame(paint);
+  });
+})();
