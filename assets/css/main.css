@@ -1083,3 +1083,7 @@ a,button,input,textarea{touch-action:manipulation}
   .p-del{grid-column:2;justify-self:start;margin-top:6px}
   .eng-grid{grid-template-columns:1fr}
 }
+
+/* ===================== NOTE PRIVACY FORM ===================== */
+.nl-privacy{font-family:var(--sans);font-weight:300;font-size:11px;letter-spacing:.02em;color:rgba(255,255,255,.4);margin:10px 0 0;width:100%}
+.nl-privacy a{color:rgba(255,255,255,.6);text-decoration:underline}
