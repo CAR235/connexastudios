@@ -28,6 +28,12 @@
     { k: 'Concept', t: 'NÖVA', a: '/nova' },
     { k: 'Concept', t: 'Atlas', a: '/atlas' },
     { k: 'Concept', t: 'Kirò', a: '/kiro' },
+    { k: 'Vai', t: 'Journal', a: '/journal' },
+    { k: 'Journal', t: 'Perché il tuo brand sembra piccolo', a: '/perche-il-tuo-brand-sembra-piccolo' },
+    { k: 'Journal', t: 'Il logo non è il brand', a: '/il-logo-non-e-il-brand' },
+    { k: 'Journal', t: 'Anatomia di un caso: Fatter', a: '/anatomia-di-un-caso-fatter' },
+    { k: 'Journal', t: 'Siti che vendono', a: '/siti-che-vendono' },
+    { k: 'Azione', t: 'Inizia un progetto', a: '/inizia' },
     { k: 'Azione', t: 'Scrivici una mail', a: 'mailto:info@connexastudios.com' },
     { k: 'Azione', t: 'Prenota una call', a: '/contatti' },
   ];
