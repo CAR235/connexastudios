@@ -1053,3 +1053,33 @@ a,button,input,textarea{touch-action:manipulation}
   .wgrid .full{grid-column:span 1}
   .wnav{flex-direction:row}
 }
+
+/* ===================== PROCESSO 4 FASI + MODELLI ===================== */
+.proc{border-top:1px solid var(--hair)}
+.proc-row{display:grid;grid-template-columns:64px 1fr 280px;gap:32px;align-items:start;padding:clamp(30px,4.5vh,52px) 0;border-bottom:1px solid var(--hair);position:relative;overflow:hidden}
+.proc-row::before{content:"";position:absolute;inset:0;background:rgba(255,255,255,.04);transform:scaleY(0);transform-origin:bottom;transition:transform .6s var(--ease)}
+.proc-row:hover::before{transform:scaleY(1)}
+.proc-row>*{position:relative}
+.p-num{font-family:'Chakra Petch',monospace;font-size:12px;letter-spacing:.12em;color:var(--lime);padding-top:6px}
+.p-head{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;margin-bottom:12px}
+.p-head h3{font-family:'Encode Sans',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,32px);line-height:1.1;letter-spacing:-.01em;margin:0}
+.p-time{font-family:'Chakra Petch',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.p-main p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);margin:0;max-width:56ch}
+.p-del{font-family:'Chakra Petch',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);border:1px solid rgba(200,245,4,.35);padding:12px 16px;justify-self:end;align-self:center;text-align:left}
+.eng-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.eng-card{border:1px solid var(--hair);padding:clamp(28px,3.5vw,44px);display:flex;flex-direction:column;gap:16px;transition:border-color .35s var(--ease)}
+.eng-card:hover{border-color:var(--lime)}
+.eng-card h3{font-family:'Encode Sans',sans-serif;font-weight:800;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.01em;margin:0}
+.eng-card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.7;color:rgba(255,255,255,.7);margin:0;flex:1}
+.e-k{font-family:'Chakra Petch',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.e-for{font-family:'Chakra Petch',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);border-top:1px solid var(--hair);padding-top:16px}
+.eng-card.lime{background:var(--lime);border-color:var(--lime)}
+.eng-card.lime h3{color:var(--ink)}
+.eng-card.lime p{color:rgba(11,11,11,.75);font-weight:400}
+.eng-card.lime .e-k{color:rgba(11,11,11,.55)}
+.eng-card.lime .e-for{color:var(--ink);border-top-color:rgba(11,11,11,.25)}
+@media(max-width:900px){
+  .proc-row{grid-template-columns:44px 1fr;gap:18px}
+  .p-del{grid-column:2;justify-self:start;margin-top:6px}
+  .eng-grid{grid-template-columns:1fr}
+}
