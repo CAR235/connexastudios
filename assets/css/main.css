@@ -1104,3 +1104,6 @@ a,button,input,textarea{touch-action:manipulation}
 .ig-tile.ig-follow:hover .ig-a .arr{transform:translate(3px,-3px)}
 .ig-tile.ig-follow .arr{display:inline-block;transition:transform .4s cubic-bezier(.32,.72,0,1)}
 @media(max-width:900px){.ig-grid{grid-template-columns:repeat(2,1fr)}}
+.ig-live-wrap{margin-top:28px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+.ig-live{width:100%}
+.ig-live iframe{min-height:360px}
