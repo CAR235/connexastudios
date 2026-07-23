@@ -32,9 +32,9 @@
     <div class="nav-links">
       <a href="/chi-siamo">Chi siamo</a>
       <a href="/servizi">Servizi</a>
+      <a href="/offerte">Offerte</a>
       <a href="/progetti">Progetti</a>
       <a href="/journal">Journal</a>
-      <a href="/store">Store</a>
       <a href="/contatti" class="nav-cta magnetic">Parliamone</a>
     </div>
     <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
@@ -43,9 +43,9 @@
 <div class="mobile-menu" id="mobileMenu">
   <a href="/chi-siamo">Chi siamo<em>01</em></a>
   <a href="/servizi">Servizi<em>02</em></a>
-  <a href="/progetti">Progetti<em>03</em></a>
-  <a href="/journal">Journal<em>04</em></a>
-  <a href="/store">Store<em>05</em></a>
+  <a href="/offerte">Offerte<em>03</em></a>
+  <a href="/progetti">Progetti<em>04</em></a>
+  <a href="/journal">Journal<em>05</em></a>
   <a href="/contatti">Contatti<em>06</em></a>
   <div class="mm-foot">
     <a href="mailto:info@connexastudios.com">info@connexastudios.com</a>
@@ -120,6 +120,20 @@
           <div class="field"><label for="w-nome">Nome</label><input id="w-nome" name="nome" type="text"></div>
           <div class="field"><label for="w-azienda">Azienda / progetto</label><input id="w-azienda" name="azienda" type="text"></div>
           <div class="field full"><label for="w-email">Email</label><input id="w-email" name="email" type="email"></div>
+          <div class="field full"><label for="w-programma">Programma o interesse <span style="opacity:.6">(facoltativo)</span></label>
+            <select id="w-programma" name="programma">
+              <option value="">— Nessuno in particolare</option>
+              <option value="Brand in 10 giorni">Offerta · Brand in 10 giorni</option>
+              <option value="Restyling onesto">Offerta · Restyling onesto</option>
+              <option value="Retainer social">Offerta · Retainer social</option>
+              <option value="Kit fiera">Offerta · Kit fiera</option>
+              <option value="Naming & verifica">Offerta · Naming &amp; verifica</option>
+              <option value="5 Brand di Sarno">Programma · 5 Brand di Sarno</option>
+              <option value="Partnership">Programma · Partnership</option>
+              <option value="Referral">Programma · Referral</option>
+              <option value="Report Campania">Lista d'attesa · Report Campania</option>
+            </select>
+          </div>
           <div class="field full"><label for="w-msg">Qualcosa che dobbiamo sapere?</label><textarea id="w-msg" name="note" rows="4"></textarea></div>
         </div>
       </div>
@@ -230,5 +244,20 @@
 <script src="assets/vendor/lenis.min.js"></script>
 <script src="assets/js/main.js?v=202607162327"></script>
 <script src="assets/js/wow.js?v=202607162327"></script>
+<script>
+  // Precompila "Programma o interesse" da ?programma= (link dalle pagine offerte/programmi/report)
+  (function () {
+    try {
+      var p = new URLSearchParams(location.search).get('programma');
+      if (!p) return;
+      var sel = document.getElementById('w-programma');
+      if (!sel) return;
+      var want = p.toLowerCase();
+      for (var i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value.toLowerCase() === want) { sel.selectedIndex = i; break; }
+      }
+    } catch (e) {}
+  })();
+</script>
 </body>
 </html>
